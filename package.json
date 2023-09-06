@@ -1,0 +1,19 @@
+{
+  "name": "vs12-provas-qa-ui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@faker-js/faker": "^8.0.2",
+    "@shelex/cypress-allure-plugin": "^2.40.0",
+    "cypress": "^10.3.1"
+  },
+  "dependencies": {
+    "faker-br": "^0.4.1"
+  }
+}
