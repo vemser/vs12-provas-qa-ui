@@ -1,0 +1,26 @@
+{
+    "candidato": [
+      {
+        "email": "Lora_Will@gmail.com",
+        "senha": "mpEuSCKMEzDQ0ko"
+      }
+    ],
+    "admGeral": [
+        {
+          "email": "Lora_Will@gmail.com",
+          "senha": "mpEuSCKMEzDQ0ko"
+        }
+      ],
+      "gestor": [
+        {
+          "email": "Lora_Will@gmail.com",
+          "senha": "mpEuSCKMEzDQ0ko"
+        }
+      ],
+      "moderador": [
+        {
+          "email": "Lora_Will@gmail.com",
+          "senha": "mpEuSCKMEzDQ0ko"
+        }
+      ]
+  }
