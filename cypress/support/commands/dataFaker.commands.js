@@ -12,4 +12,14 @@ Cypress.commands.add('gerarDadosDinamicos', () => {
             }
         })
     })
+
+    cy.writeFile('cypress/fixtures/duvida.data.json', {
+        'duvida':Cypress._.times(1, () => {
+            return {
+                'nome': `${faker.name.firstName()}`,
+                'email': `${faker.internet.email()}`,
+                'mensagem': `${faker.lorem.text()}`
+            }
+        })
+    })
 })
