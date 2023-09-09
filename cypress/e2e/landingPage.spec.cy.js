@@ -30,7 +30,7 @@ describe('Tela de Landing Page', () => {
     beforeEach(() => {
         cy.visit("/")
     });
-/*
+
     it('CT-WEB-008.1 - Validar botão "Login" com sucesso', () => {
         cy.clicarBtnLoginNavbar()
         cy.url().should('contain', '/login')
@@ -59,20 +59,21 @@ describe('Tela de Landing Page', () => {
     it('CT-WEB-013.1 - Validar formulário "Ficou com dúvida? Deixe uma mensagem" com sucesso', () => {
         cy.fixture('landingPage.data.json').then(data => {
             cy.preencherDuvidaCompleto(data.duvida[0].nome, data.duvida[0].email, data.duvida[0].mensagem)
-            cy.get(toastifyConfirmacao).contains("Contato enviado com sucesso!")
+            cy.get(toastifyConfirmacao).should('contain', "Contato enviado com sucesso!")
         })
     })
-*/
+
     it('CT-WEB-013.2 - Validar formulário "Ficou com dúvida? Deixe uma mensagem" sem sucesso (todos os campos em branco)', () => {
         cy.preencherDuvidaVazio()
-        cy.get(nomeObrigatorio).contains("Campo Obrigatório")
-        cy.get(emailObrigatorio).contains("Campo Obrigatório")
-        cy.get(mensagemObrigatorio).contains("Campo Obrigatório")
+        cy.get(nomeObrigatorio).should('contain',"Campo Obrigatório")
+        cy.get(emailObrigatorio).should('contain',"Campo Obrigatório")
+        cy.get(mensagemObrigatorio).should('contain',"Campo Obrigatório")
     })
 
     it('CT-WEB-013.3 - Validar formulário "Ficou com dúvida? Deixe uma mensagem" sem sucesso (Campo Nome vazio)', () => {
         cy.fixture('landingPage.data.json').then(data => {
             cy.preencherDuvidaSemNome(data.duvida.email, data.duvida.mensagem)
+            cy.get(nomeObrigatorio).should('contain',"Campo Obrigatório")
         })
     })
 

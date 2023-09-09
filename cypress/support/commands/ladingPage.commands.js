@@ -46,7 +46,6 @@ Cypress.Commands.add('clicarBtnConhecaJa', () => {
 })
 
 Cypress.Commands.add('preencherDuvidaCompleto', (nome, email, mensagem) => {
-    //cy.get(campoNome).click({force: true})
     cy.get(campoNome).type(nome, {force: true})
     cy.get(campoEmail).type(email, {force: true})
     cy.get(campoMensagem).type(mensagem, {force: true})
@@ -58,21 +57,21 @@ Cypress.Commands.add('preencherDuvidaVazio', () => {
 })
 
 Cypress.Commands.add('preencherDuvidaSemNome', (email, mensagem) => {
-    cy.get(campoEmail).type(email)
-    cy.get(campoMensagem).type(mensagem)
-    cy.get(btnEnviar).click()
+    cy.get(campoEmail).type(email, {force: true})
+    cy.get(campoMensagem).type(mensagem, {force: true})
+    cy.get(btnEnviar).click({force: true})
 })
 
 Cypress.Commands.add('preencherDuvidaSemEmail', (nome, mensagem) => {
-    cy.get(campoNome).type(nome)
-    cy.get(campoMensagem).type(mensagem)
-    cy.get(btnEnviar).click()
+    cy.get(campoNome).type(nome, {force: true})
+    cy.get(campoMensagem).type(mensagem, {force: true})
+    cy.get(btnEnviar).click({force: true})
 })
 
 Cypress.Commands.add('preencherDuvidaSemMensagem', (nome, email) => {
-    cy.get(campoNome).type(nome)
-    cy.get(campoMensagem).type(email)
-    cy.get(btnEnviar).click()
+    cy.get(campoNome).type(nome, {force: true})
+    cy.get(campoMensagem).type(email, {force: true})
+    cy.get(btnEnviar).click({force: true})
 })
 
 Cypress.Commands.add('clicarBtnInscrever', () => {
