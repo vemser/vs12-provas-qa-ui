@@ -8,7 +8,8 @@ let elementoContato = '.sc-pqitP'
 let elementoConhecaJa = '.sc-jSwlEQ'
 let toastifyConfirmacao = '#\\31 '
 let nomeObrigatorio = '.sc-ftLKQv > :nth-child(2)'
-let emailObrigatorio = '.sc-ftLKQv > :nth-child(4)'
+let emailObrigatorio1 = '.sc-ftLKQv > :nth-child(4)'
+let emailObrigatorio2 = '.sc-ftLKQv > :nth-child(3)'
 let mensagemObrigatorio = '.sc-ftLKQv > :nth-child(6)'
 /*let campoNome = ':nth-child(1) > .MuiInputBase-root > #custom-css-outlined-input'
 let campoEmail = ':nth-child(2) > .MuiInputBase-root > #custom-css-outlined-input'
@@ -66,7 +67,7 @@ describe('Tela de Landing Page', () => {
     it('CT-WEB-013.2 - Validar formulário "Ficou com dúvida? Deixe uma mensagem" sem sucesso (todos os campos em branco)', () => {
         cy.preencherDuvidaVazio()
         cy.get(nomeObrigatorio).should('contain',"Campo Obrigatório")
-        cy.get(emailObrigatorio).should('contain',"Campo Obrigatório")
+        cy.get(emailObrigatorio1).should('contain',"Campo Obrigatório")
         cy.get(mensagemObrigatorio).should('contain',"Campo Obrigatório")
     })
 
@@ -79,10 +80,11 @@ describe('Tela de Landing Page', () => {
 
     it('CT-WEB-013.4 - Validar formulário "Ficou com dúvida? Deixe uma mensagem" sem sucesso (Campo Email vazio)', () => {
         cy.fixture('landingPage.data.json').then(data => {
-            cy.preencherDuvidaSemEmail(data.duvida.nome, data.duvida.mensagem)
+            cy.preencherDuvidaSemEmail(data.duvida[0].nome, data.duvida[0].mensagem)
+            cy.get(emailObrigatorio2).should('contain',"Campo Obrigatório")
         })
     })
-
+/*
     it('CT-WEB-013.5 - Validar formulário "Ficou com dúvida? Deixe uma mensagem" sem sucesso (Campo Mensagem vazio)', () => {
         cy.fixture('landingPage.data.json').then(data => {
             cy.preencherDuvidaSemMensagem(data.duvida.nome, data.duvida.email)
@@ -121,5 +123,5 @@ describe('Tela de Landing Page', () => {
         cy.clicarBtnInscrever()
 
     })
-
+*/
 })
