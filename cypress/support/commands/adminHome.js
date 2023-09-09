@@ -1,7 +1,7 @@
 // Mapeamento
-let descricaoTelaHome
-let btnHome
-let btnCadastrarFuncionario
+let descricaoTelaHome = '.sc-gSkWNA > :nth-child(2)'
+let btnHome = '.sc-clcPSL > .active'
+let btnCadastrarUsuario = '.sc-lbNsEr > :nth-child(2) > :nth-child(1)'
     let dropdownEmpresa
     let empresa1
     let campoNomeCompletoFuncionario
@@ -10,7 +10,7 @@ let btnCadastrarFuncionario
     let cargo1
     let btnCadastrar1
     let btnCancelar1
-let btnCadastrarQuestoes
+let btnCadastrarQuestoes = '.sc-lbNsEr > :nth-child(2) > :nth-child(2)'
     let campoTitulo
     let campoEnunciado
     let dropdownTema
@@ -23,14 +23,14 @@ let btnCadastrarQuestoes
     let radiusCorreta3
     let btnCadastrar2
     let btnCancelar2
-let btnCadastrarEmpresa
+let btnCadastrarEmpresa = '.sc-lbNsEr > :nth-child(2) > :nth-child(3)'
     let campoNomeFantasia
     let campoCnpj
     let campoNomeCompletoGestor
     let campoEmailGestor
     let btnCadastrar3
     let btnCancelar3
-let btnCadastrarProcessoSeletivo
+let btnCadastrarProcessoSeletivo = '.sc-lbNsEr > :nth-child(2) > :nth-child(4)'
     let campoNomeProcessoSeletivo
     let campoDataInicio
     let campoDataTermino
@@ -41,15 +41,17 @@ let btnCadastrarProcessoSeletivo
     let campoDificeis
     let btnCadastrar4
     let btnCancelar4
-let btnListarCadastros
-let btnProvas
-let btnExportar
-let btnPerfil
-let btnSair
+let btnListarColaboradores = '.sc-lbNsEr > :nth-child(4) > :nth-child(1)'
+let btnListarListarEmpresas = '.sc-lbNsEr > :nth-child(4) > :nth-child(2)'
+let btnListarCandidatos = ':nth-child(4) > :nth-child(3)'
+let btnProvas = '.sc-clcPSL > [href="/vemser/vs12-provas-front/dashboard/Provas"]'
+let btnExportar = '.sc-clcPSL > [href="/vemser/vs12-provas-front/dashboard/Exportar"]'
+let btnPerfil = '.sc-clcPSL > [href="/vemser/vs12-provas-front/dashboard/Perfil"]'
+let btnSair = '.sign-out'
 
 
-Cypress.Commands.add('acessarCadastrarFuncionario', () => {
-    cy.get(btnCadastrarFuncionario).click()
+Cypress.Commands.add('acessarCadastrarUsuario', () => {
+    cy.get(btnCadastrarUsuario).click()
 })
 
 Cypress.Commands.add('cadastrarFuncionario', (NomeCompletoFuncionario, EmailFuncionario) => {
@@ -207,7 +209,7 @@ Cypress.Commands.add('acessarCadastrarProcessoSeletivo', () => {
 })
 
 Cypress.Commands.add('acessarListarCadastros', () => {
-    cy.get(btnListarCadastros).click()
+    cy.get(btnListarColaboradores).click()
 })
 
 Cypress.Commands.add('acessarProvas', () => {

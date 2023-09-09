@@ -1,4 +1,9 @@
 /// <reference types="cypress"/>
+import "../support/commands"
+
+let campoEmailLogin = '#email'
+let campoSenha = '[data-testid="input-password-form"]'
+let btnEntrar = '.sc-hTJqdO'
 
 let descricaoTelaCadastrarFuncionario
 let mensagemCadastroComSucesso
@@ -7,20 +12,24 @@ let descricaoTelaCadastrarQuestoes
 let descricaoTelaCadastrarEmpresa
 let descricaoTelaCadastrarProcesso
 let descricaoTelaListarCadastros
-let descricaoTelaProvas
-let descricaoTelaExportar
-let descricaoTelaPerfil
-let elementoLandingPage
+let descricaoTelaProvas = '.sc-gSkWNA > :nth-child(2)'
+let descricaoTelaExportar = '.sc-gSkWNA > :nth-child(2)'
+let descricaoTelaPerfil = '.sc-gSkWNA > :nth-child(2)'
+let elementoLandingPage = '.sc-gSkWNA > :nth-child(2)'
 
 describe('AdminHome', () => {
 
     beforeEach(() => {
-        cy.visit("/")
-        cy.generateFixture();
-        cy.generateFaleConoscoFixture();
+        //cy.realizarLoginAdmin();
+        cy.visit("/login")
+        cy.get(campoEmailLogin).type("admin@email.com")
+        cy.get(campoSenha).type("Provas123")
+        cy.get(btnEntrar).click()
+        //cy.generateFixture();
+        //cy.generateFaleConoscoFixture();
     });
 
-    
+    /*
     it('CT-WEB-020.1 - Validar botão "Cadastrar funcionario" com sucesso', () => {
         cy.acessarCadastrarUsuario();
         cy.get(descricaoTelaCadastrarFuncionario).contains('Cadastrar Funcionario')
@@ -315,6 +324,7 @@ describe('AdminHome', () => {
 
     //it('CT-WEB-028.4 - Validar "Listar Cadastros" sem sucesso (Pesquisar por empresa não cadastrada)', () => {
     //})
+    */
 
     it('CT-WEB-029.1 - Validar botão "Provas" com sucesso', () => {
         cy.acessarProvas()

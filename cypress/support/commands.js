@@ -1,1 +1,1 @@
-import '../support/commands/adminHome.js'
+import "../support/commands/adminHome"
