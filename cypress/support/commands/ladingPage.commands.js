@@ -1,148 +1,124 @@
 // Mapeamento
-let btnHome = '#btnHome';
-let btnNossaProposta = '#btnNossaProposta';
-let btnComoFunciona = '#btnFunciona';
-let btnContato = '#btnContato';
-let btnLogin = '#btnLogin';
-let btnConhecaJa = '#btnConhecaJa';
-let campoNome = '#campoNome';
-let campoEmail = '#campoEmail';
-let campoMensagem = '#campoMensagem';
-let btnEnviar = '#btnEnviar';
-let btnInscreva = '#btnInscrever';
-let btnFooterHome = '#btnFooterHome';
-let btnFooterNossaProposta = '#btnFooterNossaProposta';
-let btnFooterComoFunciona = '#btnFooterComoFunciona';
-let btnFooterContato = '#btnFooterContato';
-let btnFooterLogin = '#btnFooterLogin';
-let btnFooterLinkedin = '#btnFooterLinkedin';
-let btnFooterInstagram = '#btnFooterInstagram';
-let btnFooterYoutube = '#btnFooterYoutube';
-let btnFooterTwitter = '#btnFooterTwitter';
-let btnFooterFacebook = '#btnFooterFacebook';
-let btnMenu = "#btnMenu";
+let btnHome = ':nth-child(1) > a'
+let btnNossaProposta = '.desktop-links > :nth-child(2) > a'
+let btnComoFunciona = ':nth-child(3) > a'
+let btnContato = ':nth-child(4) > a'
+let btnLogin = ':nth-child(5) > a'
+let btnConhecaJa = '.sc-dmBjiZ > .sc-kDnyCx'
+let campoNome = ':nth-child(1) > .MuiInputBase-root > #custom-css-outlined-input'
+let campoEmail = ':nth-child(2) > .MuiInputBase-root > #custom-css-outlined-input'
+let campoMensagem = ':nth-child(3) > .MuiInputBase-root > #custom-css-outlined-input'
+let btnEnviar = '.sc-jrkPcm > .sc-kDnyCx'
+let btnFooterHome = '.sc-csmVar > :nth-child(1)'
+let btnFooterNossaProposta = '.sc-csmVar > :nth-child(1)'
+let btnFooterComoFunciona = '.sc-csmVar > :nth-child(3)'
+let btnFooterContato = '.sc-csmVar > :nth-child(4)'
+let btnFooterLogin = '.sc-csmVar > :nth-child(5)'
+let btnFooterLinkedin = '[data-testid="LinkedInIcon"] > path'
+let btnFooterInstagram = '[data-testid="InstagramIcon"] > path'
+let btnFooterYoutube = '[data-testid="YouTubeIcon"] > path'
+let btnFooterTwitter = '[data-testid="TwitterIcon"] > path'
+let btnFooterFacebook = '[data-testid="FacebookIcon"] > path'
 
 // Ações
-Cypress.commands.add('clicarBtnHomeNavbar', () => {
-    cy.visit("/home")
+Cypress.Commands.add('clicarBtnHomeNavbar', () => {
     cy.get(btnHome).click()
 })
 
-Cypress.commands.add('clicarBtnNossaPropostaNavbar', () => {
-    cy.visit("/home")
+Cypress.Commands.add('clicarBtnNossaPropostaNavbar', () => {
     cy.get(btnNossaProposta).click()
 })
 
-Cypress.commands.add('clicarBtnComoFuncionaNavbar', () => {
-    cy.visit("/home")
+Cypress.Commands.add('clicarBtnComoFuncionaNavbar', () => {
     cy.get(btnComoFunciona).click()
 })
 
-Cypress.commands.add('clicarBtnContatoNavbar', () => {
-    cy.visit("/home")
+Cypress.Commands.add('clicarBtnContatoNavbar', () => {
     cy.get(btnContato).click()
 })
 
-Cypress.commands.add('clicarBtnLoginNavbar', () => {
-    cy.visit("/home")
+Cypress.Commands.add('clicarBtnLoginNavbar', () => {
     cy.get(btnLogin).click()
 })
 
-Cypress.commands.add('clicarBtnConhecaJa', () => {
-    cy.visit("/home")
+Cypress.Commands.add('clicarBtnConhecaJa', () => {
     cy.get(btnConhecaJa).click()
 })
 
-Cypress.commands.add('preencherDuvidaCompleto', (nome, email, mensagem) => {
-    cy.visit("/home")
-    cy.get(campoNome).type(nome)
+Cypress.Commands.add('preencherDuvidaCompleto', (nome, email, mensagem) => {
+    //cy.get(campoNome).click({force: true})
+    cy.get(campoNome).type(nome, {force: true})
+    cy.get(campoEmail).type(email, {force: true})
+    cy.get(campoMensagem).type(mensagem, {force: true})
+    cy.get(btnEnviar).click({force: true})
+})
+
+Cypress.Commands.add('preencherDuvidaVazio', () => {
+    cy.get(btnEnviar).click()
+})
+
+Cypress.Commands.add('preencherDuvidaSemNome', (email, mensagem) => {
     cy.get(campoEmail).type(email)
     cy.get(campoMensagem).type(mensagem)
     cy.get(btnEnviar).click()
 })
 
-Cypress.commands.add('preencherDuvidaVazio', () => {
-    cy.visit("/home")
-    cy.get(btnEnviar).click()
-})
-
-Cypress.commands.add('preencherDuvidaSemNome', (email, mensagem) => {
-    cy.visit("/home")
-    cy.get(campoEmail).type(email)
-    cy.get(campoMensagem).type(mensagem)
-    cy.get(btnEnviar).click()
-})
-
-Cypress.commands.add('preencherDuvidaSemEmail', (nome, mensagem) => {
-    cy.visit("/home")
+Cypress.Commands.add('preencherDuvidaSemEmail', (nome, mensagem) => {
     cy.get(campoNome).type(nome)
     cy.get(campoMensagem).type(mensagem)
     cy.get(btnEnviar).click()
 })
 
-Cypress.commands.add('preencherDuvidaSemMensagem', (nome, email) => {
-    cy.visit("/home")
+Cypress.Commands.add('preencherDuvidaSemMensagem', (nome, email) => {
     cy.get(campoNome).type(nome)
     cy.get(campoMensagem).type(email)
     cy.get(btnEnviar).click()
 })
 
-Cypress.commands.add('clicarBtnInscrever', () => {
-    cy.visit("/home")
+Cypress.Commands.add('clicarBtnInscrever', () => {
     cy.get(btnInscreva).click()
 })
 
-Cypress.commands.add('clicarBtnFooterHome', () => {
-    cy.visit("/home")
+Cypress.Commands.add('clicarBtnFooterHome', () => {
     cy.get(btnFooterHome).click()
 })
 
-Cypress.commands.add('clicarBtnFooterNossaProposta', () => {
-    cy.visit("/home")
+Cypress.Commands.add('clicarBtnFooterNossaProposta', () => {
     cy.get(btnFooterNossaProposta).click()
 })
 
-Cypress.commands.add('clicarBtnFooterComoFunciona', () => {
-    cy.visit("/home")
+Cypress.Commands.add('clicarBtnFooterComoFunciona', () => {
     cy.get(btnFooterComoFunciona).click()
 })
 
-Cypress.commands.add('clicarBtnFooterContato', () => {
-    cy.visit("/home")
+Cypress.Commands.add('clicarBtnFooterContato', () => {
     cy.get(btnFooterContato).click()
 })
 
-Cypress.commands.add('clicarBtnFooterLogin', () => {
-    cy.visit("/home")
+Cypress.Commands.add('clicarBtnFooterLogin', () => {
     cy.get(btnFooterContato).click()
 })
 
-Cypress.commands.add('clicarBtnFooterLinkedin', () => {
-    cy.visit("/home")
+Cypress.Commands.add('clicarBtnFooterLinkedin', () => {
     cy.get(btnFooterLinkedin).click()
 })
 
-Cypress.commands.add('clicarBtnFooterInstagram', () => {
-    cy.visit("/home")
+Cypress.Commands.add('clicarBtnFooterInstagram', () => {
     cy.get(btnFooterInstagram).click()
 })
 
-Cypress.commands.add('clicarBtnFooterYoutube', () => {
-    cy.visit("/home")
+Cypress.Commands.add('clicarBtnFooterYoutube', () => {
     cy.get(btnFooterYoutube).click()
 })
 
-Cypress.commands.add('clicarBtnFooterTwitter', () => {
-    cy.visit("/home")
+Cypress.Commands.add('clicarBtnFooterTwitter', () => {
     cy.get(btnFooterTwitter).click()
 })
 
-Cypress.commands.add('clicarBtnFooterFacebook', () => {
-    cy.visit("/home")
+Cypress.Commands.add('clicarBtnFooterFacebook', () => {
     cy.get(btnFooterFacebook).click()
 })
 
-Cypress.commands.add('clicarBtnMenu', () => {
-    cy.visit("/home")
+Cypress.Commands.add('clicarBtnMenu', () => {
     cy.get(btnMenu).click()
 })
