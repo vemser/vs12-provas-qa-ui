@@ -72,7 +72,7 @@ describe('Tela de Landing Page', () => {
 
     it('CT-WEB-013.3 - Validar formulário "Ficou com dúvida? Deixe uma mensagem" sem sucesso (Campo Nome vazio)', () => {
         cy.fixture('landingPage.data.json').then(data => {
-            cy.preencherDuvidaSemNome(data.duvida.email, data.duvida.mensagem)
+            cy.preencherDuvidaSemNome(data.duvida[0].email, data.duvida[0].mensagem)
             cy.get(nomeObrigatorio).should('contain',"Campo Obrigatório")
         })
     })
