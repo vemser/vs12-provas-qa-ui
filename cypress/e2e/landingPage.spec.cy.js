@@ -10,7 +10,8 @@ let toastifyConfirmacao = '#\\31 '
 let nomeObrigatorio = '.sc-ftLKQv > :nth-child(2)'
 let emailObrigatorio1 = '.sc-ftLKQv > :nth-child(4)'
 let emailObrigatorio2 = '.sc-ftLKQv > :nth-child(3)'
-let mensagemObrigatorio = '.sc-ftLKQv > :nth-child(6)'
+let mensagemObrigatorio1 = '.sc-ftLKQv > :nth-child(6)'
+let mensagemObrigatorio2 = '.sc-ftLKQv > :nth-child(4)'
 /*let campoNome = ':nth-child(1) > .MuiInputBase-root > #custom-css-outlined-input'
 let campoEmail = ':nth-child(2) > .MuiInputBase-root > #custom-css-outlined-input'
 let campoMensagem = ':nth-child(3) > .MuiInputBase-root > #custom-css-outlined-input'
@@ -68,7 +69,7 @@ describe('Tela de Landing Page', () => {
         cy.preencherDuvidaVazio()
         cy.get(nomeObrigatorio).should('contain',"Campo Obrigatório")
         cy.get(emailObrigatorio1).should('contain',"Campo Obrigatório")
-        cy.get(mensagemObrigatorio).should('contain',"Campo Obrigatório")
+        cy.get(mensagemObrigatorio1).should('contain',"Campo Obrigatório")
     })
 
     it('CT-WEB-013.3 - Validar formulário "Ficou com dúvida? Deixe uma mensagem" sem sucesso (Campo Nome vazio)', () => {
@@ -84,13 +85,14 @@ describe('Tela de Landing Page', () => {
             cy.get(emailObrigatorio2).should('contain',"Campo Obrigatório")
         })
     })
-/*
+
     it('CT-WEB-013.5 - Validar formulário "Ficou com dúvida? Deixe uma mensagem" sem sucesso (Campo Mensagem vazio)', () => {
         cy.fixture('landingPage.data.json').then(data => {
-            cy.preencherDuvidaSemMensagem(data.duvida.nome, data.duvida.email)
+            cy.preencherDuvidaSemMensagem(data.duvida[0].nome, data.duvida[0].email)
+            cy.get(mensagemObrigatorio2).should('contain',"Campo Obrigatório")
         })
     })
-
+/*
     it('CT-WEB-014.1 - Validar botão "Linkedin" com sucesso', () => {
         cy.clicarBtnFooterLinkedin()
         cy.url().should('contain', '/login')

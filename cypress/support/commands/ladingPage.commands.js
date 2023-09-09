@@ -70,7 +70,7 @@ Cypress.Commands.add('preencherDuvidaSemEmail', (nome, mensagem) => {
 
 Cypress.Commands.add('preencherDuvidaSemMensagem', (nome, email) => {
     cy.get(campoNome).type(nome, {force: true})
-    cy.get(campoMensagem).type(email, {force: true})
+    cy.get(campoEmail).type(email, {force: true})
     cy.get(btnEnviar).click({force: true})
 })
 
