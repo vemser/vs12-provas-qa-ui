@@ -54,7 +54,7 @@ Cypress.Commands.add('preencherDuvidaCompleto', (nome, email, mensagem) => {
 })
 
 Cypress.Commands.add('preencherDuvidaVazio', () => {
-    cy.get(btnEnviar).click()
+    cy.get(btnEnviar).click({force: true})
 })
 
 Cypress.Commands.add('preencherDuvidaSemNome', (email, mensagem) => {

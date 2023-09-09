@@ -7,7 +7,9 @@ let elementoComoFunciona = '.sc-iJfdHH'
 let elementoContato = '.sc-pqitP'
 let elementoConhecaJa = '.sc-jSwlEQ'
 let toastifyConfirmacao = '#\\31 '
-//let urlLogin = "http://vemser-dbc.dbccompany.com.br:39000/vemser/vs12-provas-front/login"
+let nomeObrigatorio = '.sc-ftLKQv > :nth-child(2)'
+let emailObrigatorio = '.sc-ftLKQv > :nth-child(4)'
+let mensagemObrigatorio = '.sc-ftLKQv > :nth-child(6)'
 /*let campoNome = ':nth-child(1) > .MuiInputBase-root > #custom-css-outlined-input'
 let campoEmail = ':nth-child(2) > .MuiInputBase-root > #custom-css-outlined-input'
 let campoMensagem = ':nth-child(3) > .MuiInputBase-root > #custom-css-outlined-input'
@@ -53,16 +55,19 @@ describe('Tela de Landing Page', () => {
         cy.clicarBtnConhecaJa()
         cy.get(elementoConhecaJa).should('be.visible')
     })
-*/
+
     it('CT-WEB-013.1 - Validar formulário "Ficou com dúvida? Deixe uma mensagem" com sucesso', () => {
         cy.fixture('landingPage.data.json').then(data => {
             cy.preencherDuvidaCompleto(data.duvida[0].nome, data.duvida[0].email, data.duvida[0].mensagem)
             cy.get(toastifyConfirmacao).contains("Contato enviado com sucesso!")
         })
     })
-
+*/
     it('CT-WEB-013.2 - Validar formulário "Ficou com dúvida? Deixe uma mensagem" sem sucesso (todos os campos em branco)', () => {
-        cy.preencherDuvidaCompleto()
+        cy.preencherDuvidaVazio()
+        cy.get(nomeObrigatorio).contains("Campo Obrigatório")
+        cy.get(emailObrigatorio).contains("Campo Obrigatório")
+        cy.get(mensagemObrigatorio).contains("Campo Obrigatório")
     })
 
     it('CT-WEB-013.3 - Validar formulário "Ficou com dúvida? Deixe uma mensagem" sem sucesso (Campo Nome vazio)', () => {
