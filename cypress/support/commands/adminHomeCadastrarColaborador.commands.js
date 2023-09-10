@@ -1,4 +1,8 @@
 // Mapeamento
+let campoEmailLogin = '#email'
+let campoSenha = '[data-testid="input-password-form"]'
+let btnEntrar = '.sc-hTJqdO'
+
 let descricaoTelaHome = '.sc-gSkWNA > :nth-child(2)'
 let btnHome = '.sc-clcPSL > .active'
     let btnCadastrarColaborador = '.sc-lbNsEr > :nth-child(2) > :nth-child(1)'
@@ -16,6 +20,10 @@ let btnSair = '.sign-out > path'
 
 
 Cypress.Commands.add('acessarCadastrarColaborador', () => {
+    cy.visit("/login")
+    cy.get(campoEmailLogin).type("admin@email.com")
+    cy.get(campoSenha).type("Provas123")
+    cy.get(btnEntrar).click()
     cy.get(btnCadastrarColaborador).click()
 })
 

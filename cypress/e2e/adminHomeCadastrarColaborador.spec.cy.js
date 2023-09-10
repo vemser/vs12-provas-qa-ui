@@ -1,22 +1,16 @@
 /// <reference types="cypress"/>
 import "../support/commands"
 
-let campoEmailLogin = '#email'
-let campoSenha = '[data-testid="input-password-form"]'
-let btnEntrar = '.sc-hTJqdO'
+
 
 let mensagemCadastroComSucesso
 let mensagemCadastroSemSucesso
 let elementoLandingPage = '.sc-idyqAC'
 
-describe('AdminHome', () => {
+describe('AdminHomeCadastrarColaborador', () => {
 
     beforeEach(() => {
-        //cy.realizarLoginAdmin();
-        cy.visit("/login")
-        cy.get(campoEmailLogin).type("admin@email.com")
-        cy.get(campoSenha).type("Provas123")
-        cy.get(btnEntrar).click()
+        cy.acessarCadastrarColaborador();
         //cy.generateFixture();
         //cy.generateFaleConoscoFixture();
     });
