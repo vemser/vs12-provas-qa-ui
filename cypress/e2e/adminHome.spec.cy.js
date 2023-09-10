@@ -56,15 +56,5 @@ describe('AdminHome', () => {
         cy.acessarSair()
         cy.get(elementoLandingPage).should("be.visible")
     })
-
-    it('CT-WEB-xxx- Validar botão "Listar Empresas" com sucesso', () => {
-        cy.acessarListarEmpresas()
-        cy.url().should('contain', '/listar/empresas')
-    })
-
-    it('CT-WEB-xxx - Validar botão "Listar Candidatos" com sucesso', () => {
-        cy.acessarListarCandidatos()
-        cy.url().should('contain', '/listar/candidatos')
-    })
     
 });

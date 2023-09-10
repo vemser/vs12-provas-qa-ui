@@ -15,7 +15,7 @@ describe('AdminHomeListarEmpresa', () => {
             cy.efetuarLogin(data.admGeral[0].email, data.admGeral[0].senha)
             cy.url().should('eq', 'http://vemser-dbc.dbccompany.com.br:39000/vemser/vs12-provas-front/dashboard')
         })
-        cy.acessarListarEmpresas();
+        cy.acessarListarCandidatos();
         cy.url().should('eq', 'http://vemser-dbc.dbccompany.com.br:39000/vemser/vs12-provas-front/listar/candidatos')
     })
 
