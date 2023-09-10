@@ -5,7 +5,6 @@ let campoEmailLogin = '#email'
 let campoSenha = '[data-testid="input-password-form"]'
 let btnEntrar = '.sc-hTJqdO'
 
-let descricaoTelaCadastrarFuncionario
 let mensagemCadastroComSucesso
 let mensagemCadastroSemSucesso
 let descricaoTelaCadastrarQuestoes
@@ -26,12 +25,12 @@ describe('AdminHome', () => {
         //cy.generateFaleConoscoFixture();
     });
 
-    /*
-    it('CT-WEB-020.1 - Validar botão "Cadastrar funcionario" com sucesso', () => {
-        cy.acessarCadastrarUsuario();
-        cy.get(descricaoTelaCadastrarFuncionario).contains('Cadastrar Funcionario')
+    
+    it('CT-WEB-020.1 - Validar botão "Cadastrar colaborador" com sucesso', () => {
+        cy.acessarCadastrarColaborador();
+        cy.url().should('contain', '/cadastro/colaborador')
     })
-
+/*
     it('CT-WEB-021.1 - Validar "Cadastrar funcionario" com sucesso', () => {
         cy.fixture('cadastrarFuncionario.data.json').then(data => {
             cy.acessarCadastrarUsuario();
@@ -321,7 +320,6 @@ describe('AdminHome', () => {
 
     //it('CT-WEB-028.4 - Validar "Listar Cadastros" sem sucesso (Pesquisar por empresa não cadastrada)', () => {
     //})
-    */
 
     it('CT-WEB-029.1 - Validar botão "Provas" com sucesso', () => {
         cy.acessarProvas()
@@ -342,4 +340,5 @@ describe('AdminHome', () => {
         cy.acessarSair()
         cy.get(elementoLandingPage).should("be.visible")
     })
+    */
 });

@@ -1,7 +1,7 @@
 // Mapeamento
 let descricaoTelaHome = '.sc-gSkWNA > :nth-child(2)'
 let btnHome = '.sc-clcPSL > .active'
-    let btnCadastrarUsuario = '.sc-lbNsEr > :nth-child(2) > :nth-child(1)'
+    let btnCadastrarColaborador = '.sc-lbNsEr > :nth-child(2) > :nth-child(1)'
         let dropdownEmpresa
         let empresa1
         let campoNomeCompletoFuncionario
@@ -50,8 +50,8 @@ let btnPerfil = '.sc-gFWRCe > [href="/vemser/vs12-provas-front/dashboard/Perfil"
 let btnSair = '.sign-out > path'
 
 
-Cypress.Commands.add('acessarCadastrarUsuario', () => {
-    cy.get(btnCadastrarUsuario).click()
+Cypress.Commands.add('acessarCadastrarColaborador', () => {
+    cy.get(btnCadastrarColaborador).click()
 })
 
 Cypress.Commands.add('cadastrarFuncionario', (NomeCompletoFuncionario, EmailFuncionario) => {
