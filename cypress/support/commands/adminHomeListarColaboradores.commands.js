@@ -13,6 +13,6 @@ Cypress.Commands.add('clicarBtnVoltarPaginacao', () => {
     cy.get(btnVoltarPaginacao).click()
 })
 
-Cypress.Commands.add('clicarBtnVoltar', () => {
+Cypress.Commands.add('clicarBtnAvancarPaginacao', () => {
     cy.get(btnAvancarPaginacao).click()
 })
