@@ -4,7 +4,6 @@ import "../support/commands"
 
 
 let mensagemCadastroComSucesso
-let mensagemCadastroSemSucesso
 let elementoLandingPage = '.sc-idyqAC'
 
 describe('AdminHomeCadastrarColaborador', () => {
@@ -15,50 +14,55 @@ describe('AdminHomeCadastrarColaborador', () => {
         //cy.generateFaleConoscoFixture();
     });
 
-    it('CT-WEB-021.1 - Validar "Cadastrar funcionario" com sucesso', () => {
+    it('CT-WEB-021.1 - Validar "Cadastrar Colaborador" com sucesso', () => {
         cy.fixture('cadastrarColaborador.data.json').then(data => {
             cy.acessarCadastrarColaborador();
-            cy.cadastrarFuncionario(data.nomeCompleto, data.email)
-            cy.get(mensagemCadastroComSucesso).contains('Cadastro realizado com sucesso')
+            cy.cadastrarColaborador(data.nomeCompleto, data.email)
+            cy.contains('Cadastro realizado com sucesso').should('be.visible')
         })
     })
 
-    it('CT-WEB-021.2 - Validar "Cadastrar funcionario" sem sucesso (Todos campos vazios)', () => {
+    it('CT-WEB-021.2 - Validar "Cadastrar Colaborador" sem sucesso (Todos campos vazios)', () => {
         cy.acessarCadastrarColaborador();
-        cy.cadastrarFuncionarioTudoVazio("", "")
-        cy.get(mensagemCadastroSemSucesso).contains('Erro ao realizar cadastro')
+        cy.cadastrarColaboradorTudoVazio()
+        cy.contains('Campo obrigatório').should('be.visible')
     })
 
-    it('CT-WEB-021.3 - Validar "Cadastrar funcionario" sem sucesso (Empresa vazio)', () => {
-        cy.fixture('cadastrarFuncionario.data.json').then(data => {
+    it('CT-WEB-021.3 - Validar "Cadastrar Colaborador" sem sucesso (Empresa vazio)', () => {
+        cy.fixture('cadastrarColaborador.data.json').then(data => {
             cy.acessarCadastrarColaborador();
-            cy.cadastrarFuncionarioEmpresaVazio(data.nomeCompleto, data.email)
-            cy.get(mensagemCadastroSemSucesso).contains('Erro ao realizar cadastro')
+            cy.cadastrarColaboradorEmpresaVazio(data.nomeCompleto, data.email)
+            cy.contains('Campo obrigatório').should('be.visible')
         })
     })
 
-    it('CT-WEB-021.4 - Validar "Cadastrar funcionario" sem sucesso (Nome vazio)', () => {
-        cy.fixture('cadastrarFuncionario.data.json').then(data => {
+    it('CT-WEB-021.4 - Validar "Cadastrar Colaborador" sem sucesso (Nome vazio)', () => {
+        cy.fixture('cadastrarColaborador.data.json').then(data => {
             cy.acessarCadastrarColaborador();
-            cy.cadastrarFuncionario("", data.email)
-            cy.get(mensagemCadastroSemSucesso).contains('Erro ao realizar cadastro')
+            cy.cadastrarColaboradorNomeVazio(data.email)
+            cy.contains('Campo obrigatório').should('be.visible')
         })
     })
 
-    it('CT-WEB-021.5 - Validar "Cadastrar funcionario" sem sucesso (E-mail vazio)', () => {
-        cy.fixture('cadastrarFuncionario.data.json').then(data => {
+    it('CT-WEB-021.5 - Validar "Cadastrar Colaborador" sem sucesso (E-mail vazio)', () => {
+        cy.fixture('cadastrarColaborador.data.json').then(data => {
             cy.acessarCadastrarColaborador();
-            cy.cadastrarFuncionario(data.nomeCompleto, "")
-            cy.get(mensagemCadastroSemSucesso).contains('Erro ao realizar cadastro')
+            cy.cadastrarColaboradorEmailVazio(data.nomeCompleto)
+            cy.contains('Campo obrigatório').should('be.visible')
         })
     })
 
-    it('CT-WEB-021.6 - Validar "Cadastrar funcionario" sem sucesso (Cargo vazio)', () => {
-        cy.fixture('cadastrarFuncionario.data.json').then(data => {
+    it('CT-WEB-021.6 - Validar "Cadastrar Colaborador" sem sucesso (Cargo vazio)', () => {
+        cy.fixture('cadastrarColaborador.data.json').then(data => {
             cy.acessarCadastrarColaborador();
-            cy.cadastrarFuncionarioCargoVazio(data.nomeCompleto, data.email)
-            cy.get(mensagemCadastroSemSucesso).contains('Erro ao realizar cadastro')
+            cy.cadastrarColaboradorCargoVazio(data.nomeCompleto, data.email)
+            cy.contains('Campo obrigatório').should('be.visible')
         })
+    })
+
+    it('CT-WEB-xxx - Validar botão "Cancelar" com sucesso', () => {
+        cy.acessarCancelar()
+        cy.url().should('contain', "/dashboard/Home" )
     })
 
 /*

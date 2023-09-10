@@ -3,20 +3,14 @@ let campoEmailLogin = '#email'
 let campoSenha = '[data-testid="input-password-form"]'
 let btnEntrar = '.sc-hTJqdO'
 
-let descricaoTelaHome = '.sc-gSkWNA > :nth-child(2)'
-let btnHome = '.sc-clcPSL > .active'
-    let btnCadastrarColaborador = '.sc-lbNsEr > :nth-child(2) > :nth-child(1)'
-        let dropdownEmpresa = '#empresa'
-        let campoNomeCompletoColaborador = '#userName'
-        let campoEmailColaborador = '#email'
-        let dropdownCargo = '#userRole'
-        let cargo1 = '#userRole > option:nth-child(2)'
-        let btnCadastrar1 = '#btnCadastrar'
-        let btnCancelar1 = '#btnCancelar'
-let btnProvas = '.sc-gFWRCe > [href="/vemser/vs12-provas-front/dashboard/Provas"]'
-let btnExportar = '.sc-gFWRCe > [href="/vemser/vs12-provas-front/dashboard/Exportar"]'
-let btnPerfil = '.sc-gFWRCe > [href="/vemser/vs12-provas-front/dashboard/Perfil"]'
-let btnSair = '.sign-out > path'
+let btnCadastrarColaborador = '.sc-lbNsEr > :nth-child(2) > :nth-child(1)'
+let dropdownEmpresa = '#empresa'
+let campoNomeCompletoColaborador = '#userName'
+let campoEmailColaborador = '#email'
+let dropdownCargo = '#userRole'
+let btnCadastrar = '#btnCadastrar'
+let btnCancelar= '#btnCancelar'
+
 
 
 Cypress.Commands.add('acessarCadastrarColaborador', () => {
@@ -27,66 +21,46 @@ Cypress.Commands.add('acessarCadastrarColaborador', () => {
     cy.get(btnCadastrarColaborador).click()
 })
 
-Cypress.Commands.add('cadastrarFuncionario', (NomeCompletoFuncionario, EmailFuncionario) => {
-    //cy.get(dropdownEmpresa).select(1)
-    cy.get(campoNomeCompletoColaborador).type(NomeCompletoFuncionario)
-    cy.get(campoEmailColaborador).type(EmailFuncionario)
+Cypress.Commands.add('cadastrarColaborador', (nomeCompleto, email) => {
+    cy.get(dropdownEmpresa).select(1)
+    cy.get(campoNomeCompletoColaborador).type(nomeCompleto)
+    cy.get(campoEmailColaborador).type(email)
     cy.get(dropdownCargo).select(1)
-    cy.get(btnCadastrar1).click()
+    cy.get(btnCadastrar).click()
 })
 
-Cypress.Commands.add('cadastrarFuncionarioTudoVazio', (NomeCompletoFuncionario, EmailFuncionario) => {
-    cy.get(campoNomeCompletoColaborador).type(NomeCompletoFuncionario)
-    cy.get(campoEmailColaborador).type(EmailFuncionario)
-    cy.get(btnCadastrar1).click()
+Cypress.Commands.add('cadastrarColaboradorTudoVazio', () => {
+    cy.get(btnCadastrar).click()
 })
 
-Cypress.Commands.add('cadastrarFuncionarioEmpresaVazio', (NomeCompletoFuncionario, EmailFuncionario) => {
-    cy.get(campoNomeCompletoColaborador).type(NomeCompletoFuncionario)
-    cy.get(campoEmailColaborador).type(EmailFuncionario)
-    cy.get(dropdownCargo).click()
-    cy.get(cargo1).click()
-    cy.get(btnCadastrar1).click()
-})
-/*
-Cypress.Commands.add('cadastrarFuncionarioNomeVazio', (EmailFuncionario) => {
-    cy.get(dropdownEmpresa).click()
-    cy.get(empresa1).click()
-    cy.get(campoEmailColaborador).type(EmailFuncionario)
-    cy.get(dropdownCargo).click()
-    cy.get(cargo1).click()
-    cy.get(btnCadastrar1).click()
+Cypress.Commands.add('cadastrarColaboradorEmpresaVazio', (nomeCompleto, email) => {
+    cy.get(campoNomeCompletoColaborador).type(nomeCompleto)
+    cy.get(campoEmailColaborador).type(email)
+    cy.get(dropdownCargo).select(1)
+    cy.get(btnCadastrar).click()
 })
 
-Cypress.Commands.add('cadastrarFuncionarioEmailVazio', (NomeCompletoFuncionario) => {
-    cy.get(dropdownEmpresa).click()
-    cy.get(empresa1).click()
-    cy.get(campoNomeCompletoColaborador).type(NomeCompletoFuncionario)
-    cy.get(dropdownCargo).click()
-    cy.get(cargo1).click()
-    cy.get(btnCadastrar1).click()
-})
-*/
-Cypress.Commands.add('cadastrarFuncionarioCargoVazio', (NomeCompletoFuncionario, EmailFuncionario) => {
-    cy.get(dropdownEmpresa).click()
-    cy.get(empresa1).click()
-    cy.get(campoNomeCompletoColaborador).type(NomeCompletoFuncionario)
-    cy.get(campoEmailColaborador).type(EmailFuncionario)
-    cy.get(btnCadastrar1).click()
+Cypress.Commands.add('cadastrarColaboradorNomeVazio', (email) => {
+    cy.get(dropdownEmpresa).select(1)
+    cy.get(campoEmailColaborador).type(email)
+    cy.get(dropdownCargo).select(1)
+    cy.get(btnCadastrar).click()
 })
 
-Cypress.Commands.add('acessarProvas', () => {
-    cy.get(btnProvas).click()
+Cypress.Commands.add('cadastrarColaboradorEmailVazio', (nomeCompleto) => {
+    cy.get(dropdownEmpresa).select(1)
+    cy.get(campoNomeCompletoColaborador).type(nomeCompleto)
+    cy.get(dropdownCargo).select(1)
+    cy.get(btnCadastrar).click()
 })
 
-Cypress.Commands.add('acessarExportar', () => {
-    cy.get(btnExportar).click()
+Cypress.Commands.add('cadastrarColaboradorCargoVazio', (nomeCompleto, email) => {
+    cy.get(dropdownEmpresa).select(1)
+    cy.get(campoNomeCompletoColaborador).type(nomeCompleto)
+    cy.get(campoEmailColaborador).type(email)
+    cy.get(btnCadastrar).click()
 })
 
-Cypress.Commands.add('acessarPerfil', () => {
-    cy.get(btnPerfil).click()
-})
-
-Cypress.Commands.add('acessarSair', () => {
-    cy.get(btnSair).click()
+Cypress.Commands.add('acessarCancelar', () => {
+    cy.get(btnCancelar).click()
 })
