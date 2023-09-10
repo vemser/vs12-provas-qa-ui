@@ -2,14 +2,13 @@
 let descricaoTelaHome = '.sc-gSkWNA > :nth-child(2)'
 let btnHome = '.sc-clcPSL > .active'
     let btnCadastrarColaborador = '.sc-lbNsEr > :nth-child(2) > :nth-child(1)'
-        let dropdownEmpresa
-        let empresa1
-        let campoNomeCompletoFuncionario
-        let campoEmailFuncionario
-        let dropdownCargo
-        let cargo1
-        let btnCadastrar1
-        let btnCancelar1
+        let dropdownEmpresa = '#empresa'
+        let campoNomeCompletoColaborador = '#userName'
+        let campoEmailColaborador = '#email'
+        let dropdownCargo = '#userRole'
+        let cargo1 = '#userRole > option:nth-child(2)'
+        let btnCadastrar1 = '#btnCadastrar'
+        let btnCancelar1 = '#btnCancelar'
     let btnCadastrarQuestoes = '.sc-lbNsEr > :nth-child(2) > :nth-child(2)'
         let campoTitulo
         let campoEnunciado
@@ -55,24 +54,22 @@ Cypress.Commands.add('acessarCadastrarColaborador', () => {
 })
 
 Cypress.Commands.add('cadastrarFuncionario', (NomeCompletoFuncionario, EmailFuncionario) => {
-    cy.get(dropdownEmpresa).click()
-    cy.get(empresa1).click()
-    cy.get(campoNomeCompletoFuncionario).type(NomeCompletoFuncionario)
-    cy.get(campoEmailFuncionario).type(EmailFuncionario)
-    cy.get(dropdownCargo).click()
-    cy.get(cargo1).click()
+    //cy.get(dropdownEmpresa).select(1)
+    cy.get(campoNomeCompletoColaborador).type(NomeCompletoFuncionario)
+    cy.get(campoEmailColaborador).type(EmailFuncionario)
+    cy.get(dropdownCargo).select(1)
     cy.get(btnCadastrar1).click()
 })
 
 Cypress.Commands.add('cadastrarFuncionarioTudoVazio', (NomeCompletoFuncionario, EmailFuncionario) => {
-    cy.get(campoNomeCompletoFuncionario).type(NomeCompletoFuncionario)
-    cy.get(campoEmailFuncionario).type(EmailFuncionario)
+    cy.get(campoNomeCompletoColaborador).type(NomeCompletoFuncionario)
+    cy.get(campoEmailColaborador).type(EmailFuncionario)
     cy.get(btnCadastrar1).click()
 })
 
 Cypress.Commands.add('cadastrarFuncionarioEmpresaVazio', (NomeCompletoFuncionario, EmailFuncionario) => {
-    cy.get(campoNomeCompletoFuncionario).type(NomeCompletoFuncionario)
-    cy.get(campoEmailFuncionario).type(EmailFuncionario)
+    cy.get(campoNomeCompletoColaborador).type(NomeCompletoFuncionario)
+    cy.get(campoEmailColaborador).type(EmailFuncionario)
     cy.get(dropdownCargo).click()
     cy.get(cargo1).click()
     cy.get(btnCadastrar1).click()
@@ -81,7 +78,7 @@ Cypress.Commands.add('cadastrarFuncionarioEmpresaVazio', (NomeCompletoFuncionari
 Cypress.Commands.add('cadastrarFuncionarioNomeVazio', (EmailFuncionario) => {
     cy.get(dropdownEmpresa).click()
     cy.get(empresa1).click()
-    cy.get(campoEmailFuncionario).type(EmailFuncionario)
+    cy.get(campoEmailColaborador).type(EmailFuncionario)
     cy.get(dropdownCargo).click()
     cy.get(cargo1).click()
     cy.get(btnCadastrar1).click()
@@ -90,7 +87,7 @@ Cypress.Commands.add('cadastrarFuncionarioNomeVazio', (EmailFuncionario) => {
 Cypress.Commands.add('cadastrarFuncionarioEmailVazio', (NomeCompletoFuncionario) => {
     cy.get(dropdownEmpresa).click()
     cy.get(empresa1).click()
-    cy.get(campoNomeCompletoFuncionario).type(NomeCompletoFuncionario)
+    cy.get(campoNomeCompletoColaborador).type(NomeCompletoFuncionario)
     cy.get(dropdownCargo).click()
     cy.get(cargo1).click()
     cy.get(btnCadastrar1).click()
@@ -99,8 +96,8 @@ Cypress.Commands.add('cadastrarFuncionarioEmailVazio', (NomeCompletoFuncionario)
 Cypress.Commands.add('cadastrarFuncionarioCargoVazio', (NomeCompletoFuncionario, EmailFuncionario) => {
     cy.get(dropdownEmpresa).click()
     cy.get(empresa1).click()
-    cy.get(campoNomeCompletoFuncionario).type(NomeCompletoFuncionario)
-    cy.get(campoEmailFuncionario).type(EmailFuncionario)
+    cy.get(campoNomeCompletoColaborador).type(NomeCompletoFuncionario)
+    cy.get(campoEmailColaborador).type(EmailFuncionario)
     cy.get(btnCadastrar1).click()
 })
 

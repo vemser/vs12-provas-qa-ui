@@ -25,29 +25,30 @@ describe('AdminHome', () => {
         //cy.generateFaleConoscoFixture();
     });
 
-    
+  /*  
     it('CT-WEB-020.1 - Validar botão "Cadastrar colaborador" com sucesso', () => {
         cy.acessarCadastrarColaborador();
         cy.url().should('contain', '/cadastro/colaborador')
     })
-/*
+*/
+
     it('CT-WEB-021.1 - Validar "Cadastrar funcionario" com sucesso', () => {
-        cy.fixture('cadastrarFuncionario.data.json').then(data => {
-            cy.acessarCadastrarUsuario();
+        cy.fixture('cadastrarColaborador.data.json').then(data => {
+            cy.acessarCadastrarColaborador();
             cy.cadastrarFuncionario(data.nomeCompleto, data.email)
             cy.get(mensagemCadastroComSucesso).contains('Cadastro realizado com sucesso')
         })
     })
-
+/*
     it('CT-WEB-021.2 - Validar "Cadastrar funcionario" sem sucesso (Todos campos vazios)', () => {
-        cy.acessarCadastrarUsuario();
+        cy.acessarCadastrarColaborador();
         cy.cadastrarFuncionarioTudoVazio("", "")
         cy.get(mensagemCadastroSemSucesso).contains('Erro ao realizar cadastro')
     })
 
     it('CT-WEB-021.3 - Validar "Cadastrar funcionario" sem sucesso (Empresa vazio)', () => {
         cy.fixture('cadastrarFuncionario.data.json').then(data => {
-            cy.acessarCadastrarUsuario();
+            cy.acessarCadastrarColaborador();
             cy.cadastrarFuncionarioEmpresaVazio(data.nomeCompleto, data.email)
             cy.get(mensagemCadastroSemSucesso).contains('Erro ao realizar cadastro')
         })
@@ -55,7 +56,7 @@ describe('AdminHome', () => {
 
     it('CT-WEB-021.4 - Validar "Cadastrar funcionario" sem sucesso (Nome vazio)', () => {
         cy.fixture('cadastrarFuncionario.data.json').then(data => {
-            cy.acessarCadastrarUsuario();
+            cy.acessarCadastrarColaborador();
             cy.cadastrarFuncionario("", data.email)
             cy.get(mensagemCadastroSemSucesso).contains('Erro ao realizar cadastro')
         })
@@ -63,7 +64,7 @@ describe('AdminHome', () => {
 
     it('CT-WEB-021.5 - Validar "Cadastrar funcionario" sem sucesso (E-mail vazio)', () => {
         cy.fixture('cadastrarFuncionario.data.json').then(data => {
-            cy.acessarCadastrarUsuario();
+            cy.acessarCadastrarColaborador();
             cy.cadastrarFuncionario(data.nomeCompleto, "")
             cy.get(mensagemCadastroSemSucesso).contains('Erro ao realizar cadastro')
         })
@@ -71,7 +72,7 @@ describe('AdminHome', () => {
 
     it('CT-WEB-021.6 - Validar "Cadastrar funcionario" sem sucesso (Cargo vazio)', () => {
         cy.fixture('cadastrarFuncionario.data.json').then(data => {
-            cy.acessarCadastrarUsuario();
+            cy.acessarCadastrarColaborador();
             cy.cadastrarFuncionarioCargoVazio(data.nomeCompleto, data.email)
             cy.get(mensagemCadastroSemSucesso).contains('Erro ao realizar cadastro')
         })
