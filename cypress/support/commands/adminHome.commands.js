@@ -205,7 +205,7 @@ Cypress.Commands.add('acessarCadastrarProcessoSeletivo', () => {
     cy.get(btnCadastrarProcessoSeletivo).click()
 })
 
-Cypress.Commands.add('acessarListarCadastros', () => {
+Cypress.Commands.add('acessarListarColaboradores', () => {
     cy.get(btnListarColaboradores).click()
 })
 
