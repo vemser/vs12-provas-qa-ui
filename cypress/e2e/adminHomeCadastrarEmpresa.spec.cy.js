@@ -8,13 +8,15 @@ describe('AdminHome - CadastrarEmpresa', () => {
 
     beforeEach(() => {        
         cy.acessarHome()
+        cy.gerarDadosDinamicos()
        
     });
 
     it.only('CT-WEB-024.1 - Validar "Cadastrar empresa" com sucesso', () => {
-        cy.fixture('cadastrarEmpresa.data.json').then(data => {
-            cy.acessarCadastrarEmpresa()
-            cy.cadastrarEmpresa(data.nomeFantasia, data.cnpj, data.nomeCompleto, data.email)
+        cy.fixture('cadastrarEmpresa.data.json').then(data => {            
+           
+            cy.cadastrarEmpresaComSucesso(data.cadastroEmpresa[0].nomeFantasia, data.cadastroEmpresa[0].cnpj, data.cadastroEmpresa[0].nomeCompleto,data.cadastroEmpresa[0].email)
+            cy.contains('Cadastro realizado com sucesso').should('be.visible')          
             
         })
     })

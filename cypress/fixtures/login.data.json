@@ -1,26 +1,8 @@
 {
-    "candidato": [
-      {
-        "email": "fabiolars2009@hotmail.com",
-        "senha": "Candidato123"
-      }
-    ],
-    "admGeral": [
-        {
-          "email": "admin@email.com",
-          "senha": "Provas123"
-        }
-      ],
-      "gestor": [
-        {
-          "email": "sacwbhealth@gmail.com",
-          "senha": "vYt6wkO"
-        }
-      ],
-      "moderador": [
-        {
-          "email": "xgmoepkeuxhndt@pretreer.com",
-          "senha": "j2whYzn"
-        }
-      ]
-  }
+  "candidato": [
+    {
+      "email": "Mercedes75@gmail.com",
+      "senha": "sxEcB8LA2Ipa9ex"
+    }
+  ]
+}
