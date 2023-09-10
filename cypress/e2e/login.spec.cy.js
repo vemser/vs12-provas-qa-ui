@@ -31,7 +31,7 @@ describe('Tela de Login', () => {
     it('CT-WEB-004.1 - Validar login como candidato geral com sucesso', () => {
         cy.fixture('login.data.json').then(data => {
             cy.efetuarLogin(data.candidato[0].email, data.candidato[0].senha)
-            cy.url().should('eq', 'http://vemser-dbc.dbccompany.com.br:39000/vemser/vs12-provas-front/dashboard')
+            cy.url().should('eq', 'http://vemser-dbc.dbccompany.com.br:39000/vemser/vs12-provas-front/candidate')
         })
     })
 
