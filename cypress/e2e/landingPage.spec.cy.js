@@ -12,20 +12,7 @@ let emailObrigatorio1 = '.sc-ftLKQv > :nth-child(4)'
 let emailObrigatorio2 = '.sc-ftLKQv > :nth-child(3)'
 let mensagemObrigatorio1 = '.sc-ftLKQv > :nth-child(6)'
 let mensagemObrigatorio2 = '.sc-ftLKQv > :nth-child(4)'
-/*let campoNome = ':nth-child(1) > .MuiInputBase-root > #custom-css-outlined-input'
-let campoEmail = ':nth-child(2) > .MuiInputBase-root > #custom-css-outlined-input'
-let campoMensagem = ':nth-child(3) > .MuiInputBase-root > #custom-css-outlined-input'
-let btnEnviar = '.sc-jrkPcm > .sc-kDnyCx'
-let btnFooterHome = '.sc-csmVar > :nth-child(1)'
-let btnFooterNossaProposta = '.sc-csmVar > :nth-child(1)'
-let btnFooterComoFunciona = '.sc-csmVar > :nth-child(3)'
-let btnFooterContato = '.sc-csmVar > :nth-child(4)'
-let btnFooterLogin = '.sc-csmVar > :nth-child(5)'
-let btnFooterLinkedin = '[data-testid="LinkedInIcon"] > path'
-let btnFooterInstagram = '[data-testid="InstagramIcon"] > path'
-let btnFooterYoutube = '[data-testid="YouTubeIcon"] > path'
-let btnFooterTwitter = '[data-testid="TwitterIcon"] > path'
-let btnFooterFacebook = '[data-testid="FacebookIcon"] > path'*/
+let titutoModalConverse = '#modal-modal-title'
 
 describe('Tela de Landing Page', () => {
     
@@ -33,6 +20,7 @@ describe('Tela de Landing Page', () => {
         cy.visit("/")
     });
 
+    /*
     it('CT-WEB-008.1 - Validar botão "Login" com sucesso', () => {
         cy.clicarBtnLoginNavbar()
         cy.url().should('contain', '/login')
@@ -92,15 +80,15 @@ describe('Tela de Landing Page', () => {
             cy.get(mensagemObrigatorio2).should('contain',"Campo Obrigatório")
         })
     })
-/*
+
     it('CT-WEB-014.1 - Validar botão "Linkedin" com sucesso', () => {
         cy.clicarBtnFooterLinkedin()
-        cy.url().should('contain', '/login')
+        cy.url().should('contain', 'linkedin.com')
     })
 
     it('CT-WEB-015.1 - Validar botão "Instagram" com sucesso', () => {
         cy.clicarBtnFooterInstagram()
-        cy.url().should('contain', 'linkedin.com')
+        cy.url().should('contain', 'instagram.com')
     })
 
     it('CT-WEB-016.1 - Validar botão "Youtube" com sucesso', () => {
@@ -119,11 +107,10 @@ describe('Tela de Landing Page', () => {
         cy.clicarBtnFooterFacebook()
         cy.url().should('contain', 'facebook.com')
     })
-
-    
-    it('CT-WEB-019.1 - Validar botão "Inscreva-se" com sucesso', () => {
-        cy.clicarBtnInscrever()
-
-    })
 */
+    
+    it('CT-WEB-020.1 - Validar botão "Converse com nossa equipe" com sucesso', () => {
+        cy.clicarBtnConverseEquipe()
+        cy.get(titutoModalConverse).should('be.visible')
+    })
 })

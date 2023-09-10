@@ -11,6 +11,7 @@ let campoMensagem = ':nth-child(3) > .MuiInputBase-root > #custom-css-outlined-i
 let btnEnviar = '.sc-jrkPcm > .sc-kDnyCx'
 let btnFooterHome = '.sc-csmVar > :nth-child(1)'
 let btnFooterNossaProposta = '.sc-csmVar > :nth-child(1)'
+let btnConverseEquipe = '.sc-iUeHef > .sc-kDnyCx'
 let btnFooterComoFunciona = '.sc-csmVar > :nth-child(3)'
 let btnFooterContato = '.sc-csmVar > :nth-child(4)'
 let btnFooterLogin = '.sc-csmVar > :nth-child(5)'
@@ -74,8 +75,8 @@ Cypress.Commands.add('preencherDuvidaSemMensagem', (nome, email) => {
     cy.get(btnEnviar).click({force: true})
 })
 
-Cypress.Commands.add('clicarBtnInscrever', () => {
-    cy.get(btnInscreva).click()
+Cypress.Commands.add('clicarBtnConverseEquipe', () => {
+    cy.get(btnConverseEquipe).click()
 })
 
 Cypress.Commands.add('clicarBtnFooterHome', () => {
