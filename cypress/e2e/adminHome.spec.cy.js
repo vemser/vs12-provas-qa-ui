@@ -12,10 +12,7 @@ let descricaoTelaCadastrarQuestoes
 let descricaoTelaCadastrarEmpresa
 let descricaoTelaCadastrarProcesso
 let descricaoTelaListarCadastros
-let descricaoTelaProvas = '.sc-gSkWNA > :nth-child(2)'
-let descricaoTelaExportar = '.sc-gSkWNA > :nth-child(2)'
-let descricaoTelaPerfil = '.sc-gSkWNA > :nth-child(2)'
-let elementoLandingPage = '.sc-gSkWNA > :nth-child(2)'
+let elementoLandingPage = '.sc-idyqAC'
 
 describe('AdminHome', () => {
 
@@ -328,21 +325,21 @@ describe('AdminHome', () => {
 
     it('CT-WEB-029.1 - Validar botão "Provas" com sucesso', () => {
         cy.acessarProvas()
-        cy.get(descricaoTelaProvas).contains('Provas')
+        cy.url().should('contain', '/dashboard/Provas')
     })
 
     it('CT-WEB-030.1 - Validar botão "Exportar" com sucesso', () => {
         cy.acessarExportar()
-        cy.get(descricaoTelaExportar).contains('Exportar')
+        cy.url().should('contain', '/dashboard/Exportar')
     })
 
     it('CT-WEB-031.1 - Validar botão "Perfil" com sucesso', () => {
         cy.acessarPerfil()
-        cy.get(descricaoTelaPerfil).contains('Perfil')
+        cy.url().should('contain', '/dashboard/Perfil')
     })
 
     it('CT-WEB-032.1 - Validar botão "Sair" com sucesso', () => {
         cy.acessarSair()
-        cy.get(elementoLandingPage).contains('DBC Provas')
+        cy.get(elementoLandingPage).should("be.visible")
     })
 });

@@ -1,53 +1,53 @@
 // Mapeamento
 let descricaoTelaHome = '.sc-gSkWNA > :nth-child(2)'
 let btnHome = '.sc-clcPSL > .active'
-let btnCadastrarUsuario = '.sc-lbNsEr > :nth-child(2) > :nth-child(1)'
-    let dropdownEmpresa
-    let empresa1
-    let campoNomeCompletoFuncionario
-    let campoEmailFuncionario
-    let dropdownCargo
-    let cargo1
-    let btnCadastrar1
-    let btnCancelar1
-let btnCadastrarQuestoes = '.sc-lbNsEr > :nth-child(2) > :nth-child(2)'
-    let campoTitulo
-    let campoEnunciado
-    let dropdownTema
-    let tema1
-    let dropdownDificuldade1
-    let dificuldade1
-    let campoAlternativa1
-    let campoAlternativa2
-    let radiusCorreta1
-    let radiusCorreta3
-    let btnCadastrar2
-    let btnCancelar2
-let btnCadastrarEmpresa = '.sc-lbNsEr > :nth-child(2) > :nth-child(3)'
-    let campoNomeFantasia
-    let campoCnpj
-    let campoNomeCompletoGestor
-    let campoEmailGestor
-    let btnCadastrar3
-    let btnCancelar3
-let btnCadastrarProcessoSeletivo = '.sc-lbNsEr > :nth-child(2) > :nth-child(4)'
-    let campoNomeProcessoSeletivo
-    let campoDataInicio
-    let campoDataTermino
-    let campoNotaDeCorte
-    let dropDificuldade2
-    let campoFaceis
-    let campoMedias
-    let campoDificeis
-    let btnCadastrar4
-    let btnCancelar4
-let btnListarColaboradores = '.sc-lbNsEr > :nth-child(4) > :nth-child(1)'
-let btnListarListarEmpresas = '.sc-lbNsEr > :nth-child(4) > :nth-child(2)'
-let btnListarCandidatos = ':nth-child(4) > :nth-child(3)'
-let btnProvas = '.sc-clcPSL > [href="/vemser/vs12-provas-front/dashboard/Provas"]'
-let btnExportar = '.sc-clcPSL > [href="/vemser/vs12-provas-front/dashboard/Exportar"]'
-let btnPerfil = '.sc-clcPSL > [href="/vemser/vs12-provas-front/dashboard/Perfil"]'
-let btnSair = '.sign-out'
+    let btnCadastrarUsuario = '.sc-lbNsEr > :nth-child(2) > :nth-child(1)'
+        let dropdownEmpresa
+        let empresa1
+        let campoNomeCompletoFuncionario
+        let campoEmailFuncionario
+        let dropdownCargo
+        let cargo1
+        let btnCadastrar1
+        let btnCancelar1
+    let btnCadastrarQuestoes = '.sc-lbNsEr > :nth-child(2) > :nth-child(2)'
+        let campoTitulo
+        let campoEnunciado
+        let dropdownTema
+        let tema1
+        let dropdownDificuldade1
+        let dificuldade1
+        let campoAlternativa1
+        let campoAlternativa2
+        let radiusCorreta1
+        let radiusCorreta3
+        let btnCadastrar2
+        let btnCancelar2
+    let btnCadastrarEmpresa = '.sc-lbNsEr > :nth-child(2) > :nth-child(3)'
+        let campoNomeFantasia
+        let campoCnpj
+        let campoNomeCompletoGestor
+        let campoEmailGestor
+        let btnCadastrar3
+        let btnCancelar3
+    let btnCadastrarProcessoSeletivo = '.sc-lbNsEr > :nth-child(2) > :nth-child(4)'
+        let campoNomeProcessoSeletivo
+        let campoDataInicio
+        let campoDataTermino
+        let campoNotaDeCorte
+        let dropDificuldade2
+        let campoFaceis
+        let campoMedias
+        let campoDificeis
+        let btnCadastrar4
+        let btnCancelar4
+    let btnListarColaboradores = '.sc-lbNsEr > :nth-child(4) > :nth-child(1)'
+    let btnListarListarEmpresas = '.sc-lbNsEr > :nth-child(4) > :nth-child(2)'
+    let btnListarCandidatos = ':nth-child(4) > :nth-child(3)'
+let btnProvas = '.sc-gFWRCe > [href="/vemser/vs12-provas-front/dashboard/Provas"]'
+let btnExportar = '.sc-gFWRCe > [href="/vemser/vs12-provas-front/dashboard/Exportar"]'
+let btnPerfil = '.sc-gFWRCe > [href="/vemser/vs12-provas-front/dashboard/Perfil"]'
+let btnSair = '.sign-out > path'
 
 
 Cypress.Commands.add('acessarCadastrarUsuario', () => {
