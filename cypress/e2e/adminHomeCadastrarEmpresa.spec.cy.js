@@ -12,7 +12,7 @@ describe('AdminHome - CadastrarEmpresa', () => {
        
     });
 
-    it.only('CT-WEB-024.1 - Validar "Cadastrar empresa" com sucesso', () => {
+    it('CT-WEB-024.1 - Validar "Cadastrar empresa" com sucesso', () => {
         cy.fixture('cadastrarEmpresa.data.json').then(data => {            
            
             cy.cadastrarEmpresaComSucesso(data.cadastroEmpresa[0].nomeFantasia, data.cadastroEmpresa[0].cnpj, data.cadastroEmpresa[0].nomeCompleto,data.cadastroEmpresa[0].email)
@@ -21,8 +21,10 @@ describe('AdminHome - CadastrarEmpresa', () => {
         })
     })
 
-    it('CT-WEB-024.2 - Validar "Cadastrar empresa" sem sucesso (Nome Fantasia vazio)', () => {
+    it.only('CT-WEB-024.2 - Validar "Cadastrar empresa" sem sucesso (Nome Fantasia vazio)', () => {
         cy.fixture('cadastrarEmpresa.data.json').then(data => {
+            cy.cadastrarEmpresaSemPassarNomeFantasiaSemSucesso(data.cadastroEmpresa[0].cnpj, data.cadastroEmpresa[0].nomeCompleto,data.cadastroEmpresa[0].email)
+            cy.contains('Campo obrigatorio!').should('be.visible') 
             
         })
     })
