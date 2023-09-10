@@ -29,21 +29,25 @@ describe('AdminHome - CadastrarEmpresa', () => {
         })
     })
 
-    it.only('CT-WEB-024.3 - Validar "Cadastrar empresa" sem sucesso (CNPJ vazio)', () => {
+    it('CT-WEB-024.3 - Validar "Cadastrar empresa" sem sucesso (CNPJ vazio)', () => {
         cy.fixture('cadastrarEmpresa.data.json').then(data => {
-            cy.cadastrarEmpresaSemPassarCnpjSemSucesso()
+            cy.cadastrarEmpresaSemPassarCnpjSemSucesso(data.cadastroEmpresa[0].nomeFantasia, data.cadastroEmpresa[0].nomeCompleto,data.cadastroEmpresa[0].email)
             cy.contains('Campo obrigatorio!').should('be.visible')            
         })
     })
 
     it('CT-WEB-024.4 - Validar "Cadastrar empresa" sem sucesso (Nome gestor vazio)', () => {
         cy.fixture('cadastrarEmpresa.data.json').then(data => {
+            cy.cadastrarEmpresaSemNomeCompletoSemSucesso(data.cadastroEmpresa[0].nomeFantasia, data.cadastroEmpresa[0].cnpj, data.cadastroEmpresa[0].email)
+            cy.contains('Campo obrigatorio!').should('be.visible') 
             
         })
     })
 
-    it('CT-WEB-024.5 - Validar "Cadastrar empresa" sem sucesso (E-mail vazio)', () => {
+    it.only('CT-WEB-024.5 - Validar "Cadastrar empresa" sem sucesso (E-mail vazio)', () => {
         cy.fixture('cadastrarEmpresa.data.json').then(data => {
+            cy.cadastrarEmpresaSemEmailSemSucesso(data.cadastroEmpresa[0].nomeFantasia, data.cadastroEmpresa[0].cnpj, data.cadastroEmpresa[0].nomeCompleto)
+            cy.contains('Campo obrigatório').should('be.visible') 
             
         })
     })

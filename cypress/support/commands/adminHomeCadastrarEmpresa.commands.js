@@ -100,3 +100,20 @@ Cypress.Commands.add('cadastrarEmpresaSemPassarCnpjSemSucesso', (nomeFantasia, n
     cy.get(campoEmail).type(email)
     cy.get(btnCadastrar).click()
 })
+
+Cypress.Commands.add('cadastrarEmpresaSemNomeCompletoSemSucesso', (nomeFantasia, cnpj,  email) => {
+    cy.get(btnCadastrarEmpresa).click({force: true})
+    cy.get(campoNomeFantasia).type(nomeFantasia)
+    cy.get(campoCnpj).type(cnpj)    
+    cy.get(campoEmail).type(email)
+    cy.get(btnCadastrar).click()    
+})
+
+Cypress.Commands.add('cadastrarEmpresaSemEmailSemSucesso', (nomeFantasia, cnpj, nomeCompleto) => {
+    cy.get(btnCadastrarEmpresa).click({force: true})
+    cy.get(campoNomeFantasia).type(nomeFantasia)
+    cy.get(campoCnpj).type(cnpj)
+    cy.get(campoNomeCompleto).type(nomeCompleto)    
+    cy.get(btnCadastrar).click()
+     
+})
