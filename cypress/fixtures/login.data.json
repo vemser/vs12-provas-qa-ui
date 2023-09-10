@@ -1,26 +1,26 @@
 {
     "candidato": [
       {
-        "email": "Lora_Will@gmail.com",
-        "senha": "mpEuSCKMEzDQ0ko"
+        "email": "fabiolars2009@hotmail.com",
+        "senha": "Candidato123"
       }
     ],
     "admGeral": [
         {
-          "email": "Lora_Will@gmail.com",
-          "senha": "mpEuSCKMEzDQ0ko"
+          "email": "admin@email.com",
+          "senha": "Provas123"
         }
       ],
       "gestor": [
         {
-          "email": "Lora_Will@gmail.com",
-          "senha": "mpEuSCKMEzDQ0ko"
+          "email": "sacwbhealth@gmail.com",
+          "senha": "vYt6wkO"
         }
       ],
       "moderador": [
         {
-          "email": "Lora_Will@gmail.com",
-          "senha": "mpEuSCKMEzDQ0ko"
+          "email": "xgmoepkeuxhndt@pretreer.com",
+          "senha": "j2whYzn"
         }
       ]
   }

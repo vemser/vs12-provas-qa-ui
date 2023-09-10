@@ -6,6 +6,7 @@ module.exports = defineConfig({
       setupNodeEvents(on, config) {
           allureWriter(on, config);
           return config;
-      }
+      },
+      "baseUrl":"http://vemser-dbc.dbccompany.com.br:39000/vemser/vs12-provas-front"
   }
 });
