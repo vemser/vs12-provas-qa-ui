@@ -3,6 +3,11 @@ let campoEmailLogin = '#email'
 let campoSenha = '[data-testid="input-password-form"]'
 let btnEntrar = '.sc-hTJqdO'
 
+let campoNomeFantasia = '#nome'
+let campoCnpj = '#cnpj'
+let campoNomeCompleto = '#nomeFuncionario'
+let campoEmail = '#email'
+
 
 let btnCadastrarColaborador = '.sc-lbNsEr > :nth-child(2) > :nth-child(1)'
 let btnCadastrarQuestoes = '.sc-lbNsEr > :nth-child(2) > :nth-child(3)'
@@ -15,6 +20,9 @@ let btnProvas = '.sc-gFWRCe > [href="/vemser/vs12-provas-front/dashboard/Provas"
 let btnExportar = '.sc-gFWRCe > [href="/vemser/vs12-provas-front/dashboard/Exportar"]'
 let btnPerfil = '.sc-gFWRCe > [href="/vemser/vs12-provas-front/dashboard/Perfil"]'
 let btnSair = '.sign-out > path'
+let btnCadastrar ='#btnCadastrar'
+let btnCancelar = '#btnCancelar'
+
 
 Cypress.Commands.add('acessarHome', () => {
     cy.visit("/login")
@@ -25,7 +33,7 @@ Cypress.Commands.add('acessarHome', () => {
 
 
 Cypress.Commands.add('acessarCadastrarColaborador', () => {
-    cy.get(btnCadastrarColaborador).click()
+    cy.get(btnCadastrarColaborador).click()   
 })
 
 Cypress.Commands.add('acessarCadastrarQuestoes', () => {
@@ -33,7 +41,7 @@ Cypress.Commands.add('acessarCadastrarQuestoes', () => {
 })
 
 Cypress.Commands.add('acessarCadastrarEmpresa', () => {
-    cy.get(btnCadastrarEmpresa).click()
+    cy.get(btnCadastrarEmpresa).click({force: true})
 })
 
 Cypress.Commands.add('acessarCadastrarProcessoSeletivo', () => {
@@ -66,4 +74,46 @@ Cypress.Commands.add('acessarPerfil', () => {
 
 Cypress.Commands.add('acessarSair', () => {
     cy.get(btnSair).click()
+})
+
+Cypress.Commands.add('cadastrarEmpresaComSucesso', (nomeFantasia, cnpj, nomeCompleto, email) => {
+    cy.get(btnCadastrarEmpresa).click({force: true})
+    cy.get(campoNomeFantasia).type(nomeFantasia)
+    cy.get(campoCnpj).type(cnpj)
+    cy.get(campoNomeCompleto).type(nomeCompleto)
+    cy.get(campoEmail).type(email)
+    cy.get(btnCadastrar).click()
+})
+
+Cypress.Commands.add('cadastrarEmpresaSemPassarNomeFantasiaSemSucesso', (cnpj, nomeCompleto, email) => {
+    cy.get(btnCadastrarEmpresa).click({force: true})   
+    cy.get(campoCnpj).type(cnpj)
+    cy.get(campoNomeCompleto).type(nomeCompleto)
+    cy.get(campoEmail).type(email)
+    cy.get(btnCadastrar).click()
+})
+
+Cypress.Commands.add('cadastrarEmpresaSemPassarCnpjSemSucesso', (nomeFantasia, nomeCompleto, email) => {
+    cy.get(btnCadastrarEmpresa).click({force: true})
+    cy.get(campoNomeFantasia).type(nomeFantasia)    
+    cy.get(campoNomeCompleto).type(nomeCompleto)
+    cy.get(campoEmail).type(email)
+    cy.get(btnCadastrar).click()
+})
+
+Cypress.Commands.add('cadastrarEmpresaSemNomeCompletoSemSucesso', (nomeFantasia, cnpj,  email) => {
+    cy.get(btnCadastrarEmpresa).click({force: true})
+    cy.get(campoNomeFantasia).type(nomeFantasia)
+    cy.get(campoCnpj).type(cnpj)    
+    cy.get(campoEmail).type(email)
+    cy.get(btnCadastrar).click()    
+})
+
+Cypress.Commands.add('cadastrarEmpresaSemEmailSemSucesso', (nomeFantasia, cnpj, nomeCompleto) => {
+    cy.get(btnCadastrarEmpresa).click({force: true})
+    cy.get(campoNomeFantasia).type(nomeFantasia)
+    cy.get(campoCnpj).type(cnpj)
+    cy.get(campoNomeCompleto).type(nomeCompleto)    
+    cy.get(btnCadastrar).click()
+     
 })
