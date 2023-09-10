@@ -50,6 +50,6 @@ describe('AdminHome - CadastrarEmpresa', () => {
             cy.contains('Campo obrigatório').should('be.visible') 
             
         })
-    })
+    })    
 
 });
