@@ -20,7 +20,6 @@ describe('Tela de Landing Page', () => {
         cy.visit("/")
     });
 
-    /*
     it('CT-WEB-008.1 - Validar botão "Login" com sucesso', () => {
         cy.clicarBtnLoginNavbar()
         cy.url().should('contain', '/login')
@@ -107,9 +106,8 @@ describe('Tela de Landing Page', () => {
         cy.clicarBtnFooterFacebook()
         cy.url().should('contain', 'facebook.com')
     })
-*/
     
-    it('CT-WEB-020.1 - Validar botão "Converse com nossa equipe" com sucesso', () => {
+    it('CT-WEB-019.1 - Validar botão "Converse com nossa equipe" com sucesso', () => {
         cy.clicarBtnConverseEquipe()
         cy.get(titutoModalConverse).should('be.visible')
     })
