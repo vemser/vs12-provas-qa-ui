@@ -6,14 +6,14 @@ let mensagemCadastroComSucesso
 
 describe('AdminHome - CadastrarEmpresa', () => {
 
-    beforeEach(() => {
-        cy.acessarCadastrarEmpresa();
-        //cy.generateFixture();
-        //cy.generateFaleConoscoFixture();
+    beforeEach(() => {        
+        cy.acessarHome()
+       
     });
 
-    it('CT-WEB-024.1 - Validar "Cadastrar empresa" com sucesso', () => {
+    it.only('CT-WEB-024.1 - Validar "Cadastrar empresa" com sucesso', () => {
         cy.fixture('cadastrarEmpresa.data.json').then(data => {
+            cy.acessarCadastrarEmpresa()
             cy.cadastrarEmpresa(data.nomeFantasia, data.cnpj, data.nomeCompleto, data.email)
             
         })
