@@ -1,7 +1,7 @@
 /// <reference types="cypress"/>
 
 
-describe('AdminHomeListarEmpresa', () => {
+describe('AdminHomeListarCandidatos', () => {
 
     beforeEach(() => {
         cy.visit("/login")
