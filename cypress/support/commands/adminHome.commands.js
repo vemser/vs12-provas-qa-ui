@@ -209,6 +209,10 @@ Cypress.Commands.add('acessarListarColaboradores', () => {
     cy.get(btnListarColaboradores).click()
 })
 
+Cypress.Commands.add('acessarListarEmpresas', () => {
+    cy.get(btnListarListarEmpresas).click()
+})
+
 Cypress.Commands.add('acessarProvas', () => {
     cy.get(btnProvas).click()
 })
