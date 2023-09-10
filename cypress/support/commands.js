@@ -1,3 +1,4 @@
 //import "../support/commands/landingPage.commands";
-import "../support/commands/adminHome.commands"
+//import "./commands/adminHomeCadastrarProcessoSeletivo.commands"
+import "../support/commands/adminHomeCadastrarQuestoes.commands"
 import '@shelex/cypress-allure-plugin';
