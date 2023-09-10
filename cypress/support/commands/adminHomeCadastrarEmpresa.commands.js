@@ -45,7 +45,11 @@ Cypress.Commands.add('acessarListarColaboradores', () => {
 })
 
 Cypress.Commands.add('acessarListarEmpresas', () => {
-    cy.get(btnListarListarEmpresas).click()
+    cy.get(btnListarEmpresas).click()
+})
+
+Cypress.Commands.add('acessarListarCandidatos', () => {
+    cy.get(btnListarCandidatos).click()
 })
 
 Cypress.Commands.add('acessarProvas', () => {
