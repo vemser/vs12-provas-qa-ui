@@ -44,7 +44,7 @@ describe('AdminHome - CadastrarEmpresa', () => {
         })
     })
 
-    it.only('CT-WEB-024.5 - Validar "Cadastrar empresa" sem sucesso (E-mail vazio)', () => {
+    it('CT-WEB-024.5 - Validar "Cadastrar empresa" sem sucesso (E-mail vazio)', () => {
         cy.fixture('cadastrarEmpresa.data.json').then(data => {
             cy.cadastrarEmpresaSemEmailSemSucesso(data.cadastroEmpresa[0].nomeFantasia, data.cadastroEmpresa[0].cnpj, data.cadastroEmpresa[0].nomeCompleto)
             cy.contains('Campo obrigatório').should('be.visible') 
