@@ -1,7 +1,6 @@
 /// <reference types="cypress" />
-import "../support/commands"
+import "../support/commandsLandingPage"
 
-let elementoHome = '.sc-idyqAC'
 let elementoNossaProposta = '.sc-jIJgYh'
 let elementoComoFunciona = '.sc-iJfdHH'
 let elementoContato = '.sc-pqitP'
