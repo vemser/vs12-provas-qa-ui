@@ -2,14 +2,6 @@ import { faker } from '@faker-js/faker';
 
 Cypress.Commands.add('gerarDadosDinamicos', () => {
     const fakerBr = require("faker-br")
-    cy.writeFile('cypress/fixtures/login.data.json', {
-        'candidato':Cypress._.times(1, () => {
-            return {
-                'email': `${faker.internet.email()}`,
-                'senha': `${faker.internet.password()}`
-            }
-        })
-    })
 
     cy.writeFile('cypress/fixtures/duvida.data.json', {
         'duvida':Cypress._.times(1, () => {
