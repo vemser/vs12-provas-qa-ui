@@ -4,7 +4,7 @@ describe('Tela de Login', () => {
 
     beforeEach(() => {
         cy.visit("/")
-        cy.get(':nth-child(5) > a').click()
+        cy.get('.desktop-links > :nth-child(5) > a').click()
     });
 
     it('CT-WEB-001.1 - Validar login como administrador com sucesso', () => {

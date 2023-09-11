@@ -22,10 +22,10 @@ Cypress.Commands.add('acessarCadastrarColaborador', () => {
 })
 
 Cypress.Commands.add('cadastrarColaborador', (nomeCompleto, email) => {
-    cy.get(dropdownEmpresa).select(1)
+    //cy.get(dropdownEmpresa).select(1)
     cy.get(campoNomeCompletoColaborador).type(nomeCompleto)
     cy.get(campoEmailColaborador).type(email)
-    cy.get(dropdownCargo).select(1)
+    cy.get(dropdownCargo).select("Colaborador")
     cy.get(btnCadastrar).click()
 })
 
@@ -36,26 +36,26 @@ Cypress.Commands.add('cadastrarColaboradorTudoVazio', () => {
 Cypress.Commands.add('cadastrarColaboradorEmpresaVazio', (nomeCompleto, email) => {
     cy.get(campoNomeCompletoColaborador).type(nomeCompleto)
     cy.get(campoEmailColaborador).type(email)
-    cy.get(dropdownCargo).select(1)
+    cy.get(dropdownCargo).select("Colaborador")
     cy.get(btnCadastrar).click()
 })
 
 Cypress.Commands.add('cadastrarColaboradorNomeVazio', (email) => {
-    cy.get(dropdownEmpresa).select(1)
+    //cy.get(dropdownEmpresa).select(0)
     cy.get(campoEmailColaborador).type(email)
-    cy.get(dropdownCargo).select(1)
+    cy.get(dropdownCargo).select("Colaborador")
     cy.get(btnCadastrar).click()
 })
 
 Cypress.Commands.add('cadastrarColaboradorEmailVazio', (nomeCompleto) => {
-    cy.get(dropdownEmpresa).select(1)
+    //cy.get(dropdownEmpresa).select(1)
     cy.get(campoNomeCompletoColaborador).type(nomeCompleto)
     cy.get(dropdownCargo).select(1)
     cy.get(btnCadastrar).click()
 })
 
 Cypress.Commands.add('cadastrarColaboradorCargoVazio', (nomeCompleto, email) => {
-    cy.get(dropdownEmpresa).select(1)
+    //cy.get(dropdownEmpresa).select(1)
     cy.get(campoNomeCompletoColaborador).type(nomeCompleto)
     cy.get(campoEmailColaborador).type(email)
     cy.get(btnCadastrar).click()

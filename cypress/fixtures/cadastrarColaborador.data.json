@@ -1,4 +1,8 @@
 {
-    "nomeCompleto":"Nome de colaborador teste",
-    "email": "emailTeste@gmail.com"
+  "cadastroColaborador": [
+    {
+      "nomeCompleto": "Josh Davis",
+      "email": "arnaldotest@gmail.com"
+    }
+  ]
 }

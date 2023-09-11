@@ -1,10 +1,10 @@
 /// <reference types="cypress" />
 import "../support/commands"
 
-let elementoNossaProposta = '.sc-jIJgYh'
+let elementoSobre = '.desktop-links > :nth-child(2) > a'
 let elementoComoFunciona = '.sc-iJfdHH'
 let elementoContato = '.sc-pqitP'
-let elementoConhecaJa = '.sc-jSwlEQ'
+let elementoConhecaJa = '.sc-dmBjiZ > .sc-kDnyCx'
 let toastifyConfirmacao = '#\\31 '
 let nomeObrigatorio = '.sc-ftLKQv > :nth-child(2)'
 let emailObrigatorio1 = '.sc-ftLKQv > :nth-child(4)'
@@ -24,9 +24,9 @@ describe('Tela de Landing Page', () => {
         cy.url().should('contain', '/login')
     })
 
-    it('CT-WEB-009.1 - Validar botão "Nossa Proposta" com sucesso', () => {
-        cy.clicarBtnNossaPropostaNavbar()
-        cy.get(elementoNossaProposta).should('be.visible')
+    it('CT-WEB-009.1 - Validar botão "Sobre" com sucesso', () => {
+        cy.clicarBtnSobreNavbar()
+        cy.get(elementoSobre).should('be.visible')
     })
 
     it('CT-WEB-010.1 - Validar botão "Como Funciona" com sucesso', () => {

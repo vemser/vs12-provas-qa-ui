@@ -1,7 +1,7 @@
 // Mapeamento
 let campoEmail = '#email';
 let campoSenha = '[data-testid="input-password-form"]';
-let btnEntrar = '.sc-hTJqdO';
+let btnEntrar = '.sc-jfLZDZ';
 let btnVoltar = '.IconLink';
 let btnMenuMobile = '[data-testid="MenuIcon"]';
 

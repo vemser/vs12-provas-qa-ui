@@ -1,7 +1,7 @@
 // Mapeamento
 let campoEmailLogin = '#email'
 let campoSenha = '[data-testid="input-password-form"]'
-let btnEntrar = '.sc-hTJqdO'
+let btnEntrar = '.sc-.sc-jfLZDZ'
 
 
 let btnCadastrarColaborador = '.sc-lbNsEr > :nth-child(2) > :nth-child(1)'
