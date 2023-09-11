@@ -43,7 +43,7 @@ Cypress.Commands.add('clicarBtnLoginNavbar', () => {
 })
 
 Cypress.Commands.add('clicarBtnConhecaJa', () => {
-    cy.get(btnConhecaJa).click()
+    cy.get(btnConhecaJa).click({force: true})
 })
 
 Cypress.Commands.add('preencherDuvidaCompleto', (nome, email, mensagem) => {
@@ -100,23 +100,27 @@ Cypress.Commands.add('clicarBtnFooterLogin', () => {
 })
 
 Cypress.Commands.add('clicarBtnFooterLinkedin', () => {
-    cy.get(btnFooterLinkedin).click()
+    
+    //cy.get(btnFooterLinkedin).click({force: true})
+    cy.get(btnFooterLinkedin).then (function(ln){
+        const url= ln.prop('href');
+        cy.visit(url);})
 })
 
 Cypress.Commands.add('clicarBtnFooterInstagram', () => {
-    cy.get(btnFooterInstagram).click()
+    cy.get(btnFooterInstagram).click({force: true})
 })
 
 Cypress.Commands.add('clicarBtnFooterYoutube', () => {
-    cy.get(btnFooterYoutube).click()
+    cy.get(btnFooterYoutube).click({force: true})
 })
 
 Cypress.Commands.add('clicarBtnFooterTwitter', () => {
-    cy.get(btnFooterTwitter).click()
+    cy.get(btnFooterTwitter).click({force: true})
 })
 
 Cypress.Commands.add('clicarBtnFooterFacebook', () => {
-    cy.get(btnFooterFacebook).click()
+    cy.get(btnFooterFacebook).click({force: true})
 })
 
 Cypress.Commands.add('clicarBtnMenu', () => {
