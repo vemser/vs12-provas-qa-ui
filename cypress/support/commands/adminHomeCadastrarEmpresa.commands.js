@@ -1,34 +1,31 @@
 // Mapeamento
-let campoEmailLogin = '#email'
-let campoSenha = '[data-testid="input-password-form"]'
-let btnEntrar = '.sc-hTJqdO'
-
 let campoNomeFantasia = '#nome'
 let campoCnpj = '#cnpj'
 let campoNomeCompleto = '#nomeFuncionario'
 let campoEmail = '#email'
 
 
-let btnCadastrarColaborador = '.sc-lbNsEr > :nth-child(2) > :nth-child(1)'
-let btnCadastrarQuestoes = '.sc-lbNsEr > :nth-child(2) > :nth-child(3)'
-let btnCadastrarEmpresa = '.sc-lbNsEr > :nth-child(2) > :nth-child(2)'
+let btnCadastrarColaborador = '.sc-iOmpNS > :nth-child(2) > :nth-child(1)'
+let btnCadastrarQuestoes = '.sc-iOmpNS > :nth-child(2) > :nth-child(4)'
+let btnCadastrarEmpresa = '.sc-iOmpNS > :nth-child(2) > :nth-child(3)'
 let btnCadastrarProcessoSeletivo = '.sc-lbNsEr > :nth-child(2) > :nth-child(4)'
-let btnListarColaboradores = '.sc-lbNsEr > :nth-child(4) > :nth-child(1)'
-let btnListarEmpresas = '.sc-lbNsEr > :nth-child(4) > :nth-child(2)'
+let btnListarColaboradores = '.sc-iOmpNS > :nth-child(4) > :nth-child(1)'
+let btnListarEmpresas = '.sc-iOmpNS > :nth-child(4) > :nth-child(2)'
 let btnListarCandidatos = ':nth-child(4) > :nth-child(3)'
-let btnProvas = '.sc-gFWRCe > [href="/vemser/vs12-provas-front/dashboard/Provas"]'
-let btnExportar = '.sc-gFWRCe > [href="/vemser/vs12-provas-front/dashboard/Exportar"]'
-let btnPerfil = '.sc-gFWRCe > [href="/vemser/vs12-provas-front/dashboard/Perfil"]'
+let btnProvas = '.sc-fXitXF > [href="/vemser/vs12-provas-front/dashboard/Provas"]'
+let btnEmpresa = '[href="/vemser/vs12-provas-front/dashboard/Empresa"]'
+let btnPerfil = '.sc-fXitXF > [href="/vemser/vs12-provas-front/dashboard/Perfil"]'
 let btnSair = '.sign-out > path'
 let btnCadastrar ='#btnCadastrar'
 let btnCancelar = '#btnCancelar'
 
 
 Cypress.Commands.add('acessarHome', () => {
-    cy.visit("/login")
-    cy.get(campoEmailLogin).type("admin@email.com")
-    cy.get(campoSenha).type("Provas123")
-    cy.get(btnEntrar).click()
+
+    cy.fixture('login.data.json').then(data => {
+        cy.efetuarLogin(data.admGeral[0].email, data.admGeral[0].senha)
+        cy.url().should('eq', 'http://vemser-dbc.dbccompany.com.br:39000/vemser/vs12-provas-front/dashboard')
+    })
 })
 
 
@@ -64,8 +61,8 @@ Cypress.Commands.add('acessarProvas', () => {
     cy.get(btnProvas).click()
 })
 
-Cypress.Commands.add('acessarExportar', () => {
-    cy.get(btnExportar).click()
+Cypress.Commands.add('acessarEmpresa', () => {
+    cy.get(btnEmpresa).click()
 })
 
 Cypress.Commands.add('acessarPerfil', () => {

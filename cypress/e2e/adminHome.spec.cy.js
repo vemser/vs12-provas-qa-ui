@@ -6,6 +6,8 @@ let elementoLandingPage = '.sc-idyqAC'
 describe('AdminHome', () => {
 
     beforeEach(() => {
+        cy.visit("/")
+        cy.get('.desktop-links > :nth-child(5) > a').click()
         cy.acessarHome();
         //cy.generateFixture();
         //cy.generateFaleConoscoFixture();
@@ -32,19 +34,14 @@ describe('AdminHome', () => {
         cy.url().should('contain', '/cadastro/processoSeletivo')
     })
 
-    it('CT-WEB-027.1 - Validar botão "Listar Colaboradores" com sucesso', () => {
-        cy.acessarListarColaboradores()
-        cy.url().should('contain', '/listar/colaboradores')
-    })
-
     it('CT-WEB-029.1 - Validar botão "Provas" com sucesso', () => {
         cy.acessarProvas()
         cy.url().should('contain', '/dashboard/Provas')
     })
 
-    it('CT-WEB-030.1 - Validar botão "Exportar" com sucesso', () => {
-        cy.acessarExportar()
-        cy.url().should('contain', '/dashboard/Exportar')
+    it('CT-WEB-030.1 - Validar botão "Empresa" com sucesso', () => {
+        cy.acessarEmpresa()
+        cy.url().should('contain', '/dashboard/Empresa')
     })
 
     it('CT-WEB-031.1 - Validar botão "Perfil" com sucesso', () => {

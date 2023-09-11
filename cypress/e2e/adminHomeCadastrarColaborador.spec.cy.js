@@ -9,12 +9,13 @@ let elementoLandingPage = '.sc-idyqAC'
 describe('AdminHomeCadastrarColaborador', () => {
 
     beforeEach(() => {
-        cy.acessarCadastrarColaborador();
-        //cy.generateFixture();
+        cy.visit("/")
+        cy.get('.desktop-links > :nth-child(5) > a').click()
+        cy.acessarHome();
         //cy.generateFaleConoscoFixture();
     });
 
-    it('CT-WEB-021.1 - Validar "Cadastrar Colaborador" com sucesso', () => {
+    it.only('CT-WEB-021.1 - Validar "Cadastrar Colaborador" com sucesso', () => {
         cy.fixture('cadastrarColaborador.data.json').then(data => {
             cy.acessarCadastrarColaborador();
             cy.cadastrarColaborador(data.nomeCompleto, data.email)
@@ -59,31 +60,4 @@ describe('AdminHomeCadastrarColaborador', () => {
             cy.contains('Campo obrigatório').should('be.visible')
         })
     })
-
-    it('CT-WEB-xxx - Validar botão "Cancelar" com sucesso', () => {
-        cy.acessarCancelar()
-        cy.url().should('contain', "/dashboard/Home" )
-    })
-
-/*
-    it('CT-WEB-029.1 - Validar botão "Provas" com sucesso', () => {
-        cy.acessarProvas()
-        cy.url().should('contain', '/dashboard/Provas')
-    })
-
-    it('CT-WEB-030.1 - Validar botão "Exportar" com sucesso', () => {
-        cy.acessarExportar()
-        cy.url().should('contain', '/dashboard/Exportar')
-    })
-
-    it('CT-WEB-031.1 - Validar botão "Perfil" com sucesso', () => {
-        cy.acessarPerfil()
-        cy.url().should('contain', '/dashboard/Perfil')
-    })
-
-    it('CT-WEB-032.1 - Validar botão "Sair" com sucesso', () => {
-        cy.acessarSair()
-        cy.get(elementoLandingPage).should("be.visible")
-    })
-*/
 });

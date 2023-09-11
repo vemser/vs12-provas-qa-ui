@@ -1,9 +1,9 @@
 // Mapeamento
-let btnHome = ':nth-child(1) > a'
-let btnNossaProposta = '.desktop-links > :nth-child(2) > a'
-let btnComoFunciona = ':nth-child(3) > a'
-let btnContato = ':nth-child(4) > a'
-let btnLogin = ':nth-child(5) > a'
+let btnHome = '.desktop-links > :nth-child(1) > a'
+let btnSobre = '.desktop-links > :nth-child(2) > a'
+let btnComoFunciona = '.desktop-links > :nth-child(3) > a'
+let btnContato = '.desktop-links > :nth-child(4) > a'
+let btnLogin = '.desktop-links > :nth-child(5) > a'
 let btnConhecaJa = '.sc-dmBjiZ > .sc-kDnyCx'
 let campoNome = ':nth-child(1) > .MuiInputBase-root > #custom-css-outlined-input'
 let campoEmail = ':nth-child(2) > .MuiInputBase-root > #custom-css-outlined-input'
@@ -11,7 +11,7 @@ let campoMensagem = ':nth-child(3) > .MuiInputBase-root > #custom-css-outlined-i
 let btnEnviar = '.sc-jrkPcm > .sc-kDnyCx'
 let btnFooterHome = '.sc-csmVar > :nth-child(1)'
 let btnFooterNossaProposta = '.sc-csmVar > :nth-child(1)'
-let btnConverseEquipe = '.sc-iUeHef > .sc-kDnyCx'
+let btnConverseEquipe = '.sc-iAfmwU > .sc-kDnyCx'
 let btnFooterComoFunciona = '.sc-csmVar > :nth-child(3)'
 let btnFooterContato = '.sc-csmVar > :nth-child(4)'
 let btnFooterLogin = '.sc-csmVar > :nth-child(5)'
@@ -26,8 +26,8 @@ Cypress.Commands.add('clicarBtnHomeNavbar', () => {
     cy.get(btnHome).click()
 })
 
-Cypress.Commands.add('clicarBtnNossaPropostaNavbar', () => {
-    cy.get(btnNossaProposta).click()
+Cypress.Commands.add('clicarBtnSobreNavbar', () => {
+    cy.get(btnSobre).click()
 })
 
 Cypress.Commands.add('clicarBtnComoFuncionaNavbar', () => {
