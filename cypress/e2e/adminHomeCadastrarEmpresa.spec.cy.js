@@ -7,8 +7,6 @@ let mensagemCadastroComSucesso
 describe('AdminHome - CadastrarEmpresa', () => {
 
     beforeEach(() => {        
-        cy.visit("/")
-        cy.get('.desktop-links > :nth-child(5) > a').click()
         cy.acessarHome();
         cy.gerarDadosDinamicos()
        

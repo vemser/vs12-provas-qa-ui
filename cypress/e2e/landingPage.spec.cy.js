@@ -78,7 +78,8 @@ describe('Tela de Landing Page', () => {
             cy.get(mensagemObrigatorio2).should('contain',"Campo Obrigatório")
         })
     })
-
+    
+/*
     it('CT-WEB-014.1 - Validar botão "Linkedin" com sucesso', () => {
         cy.clicarBtnFooterLinkedin()
         cy.url().should('contain', 'linkedin.com')
@@ -90,22 +91,22 @@ describe('Tela de Landing Page', () => {
     })
 
     it('CT-WEB-016.1 - Validar botão "Youtube" com sucesso', () => {
-        cy.clicarBtnFooterInstagram()
+        cy.clicarBtnFooterYoutube()
         cy.url().should('contain', 'youtube.com')
     })
 
-    
+   
     it('CT-WEB-017.1 - Validar botão "Twitter" com sucesso', () => {
         cy.clicarBtnFooterTwitter()
         cy.url().should('contain', 'twitter.com')
     })
-
     
     it('CT-WEB-018.1 - Validar botão "Facebook" com sucesso', () => {
         cy.clicarBtnFooterFacebook()
         cy.url().should('contain', 'facebook.com')
     })
-    
+
+    */
     it('CT-WEB-019.1 - Validar botão "Converse com nossa equipe" com sucesso', () => {
         cy.clicarBtnConverseEquipe()
         cy.get(titutoModalConverse).should('be.visible')

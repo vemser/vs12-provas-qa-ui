@@ -100,11 +100,7 @@ Cypress.Commands.add('clicarBtnFooterLogin', () => {
 })
 
 Cypress.Commands.add('clicarBtnFooterLinkedin', () => {
-    
-    //cy.get(btnFooterLinkedin).click({force: true})
-    cy.get(btnFooterLinkedin).then (function(ln){
-        const url= ln.prop('href');
-        cy.visit(url);})
+    cy.get(btnFooterLinkedin).click({force: true})
 })
 
 Cypress.Commands.add('clicarBtnFooterInstagram', () => {
