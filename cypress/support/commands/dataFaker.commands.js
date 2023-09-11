@@ -24,4 +24,14 @@ Cypress.Commands.add('gerarDadosDinamicos', () => {
             }
         })
     })
+
+    cy.writeFile('cypress/fixtures/cadastrarColaborador.data.json', {
+        'cadastroColaborador':Cypress._.times(1, () => {
+            return {
+                'nomeCompleto': `${faker.name.fullName()}`,
+                'email': `arnaldotest@gmail.com`,
+                
+            }
+        })
+    })
 })
