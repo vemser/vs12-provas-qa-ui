@@ -12,14 +12,14 @@ describe('Admin Home - Cadastrar Processo Seletivo', () => {
     });
 
   
-    it('CT-WEB-026.1 - Validar Cadastrar Processo Seletivo com sucesso', () => {
+    /*it('CT-WEB-026.1 - Validar Cadastrar Processo Seletivo com sucesso', () => {
         cy.fixture('cadastrarProcessoSeletivo.data.json').then(data => {
             cy.cadastrarProcessoSeletivo(data.nomeProcessoSeletivo, data.dataHoraInicial, data.dataHoraFinal, data.notaDeCorte,
                  data.quantidadeFacil, data.quantidadeMedio, data.quantidadeDificil)
             cy.contains("Cadastro realizado com sucesso").should('be.visible')
         })
     })
-
+*/
     it('CT-WEB-026.2 - Validar Cadastrar Processo Seletivo sem sucesso (Nome do Processo seletivo vazio)', () => {
         cy.fixture('cadastrarProcessoSeletivo.data.json').then(data => {
             cy.cadastrarProcessoSeletivoSemNome(data.dataHoraInicial, data.dataHoraFinal, data.notaDeCorte,

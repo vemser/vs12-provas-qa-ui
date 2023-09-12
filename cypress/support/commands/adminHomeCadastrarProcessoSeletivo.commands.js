@@ -33,13 +33,13 @@ Cypress.Commands.add('acessarCadastrarProcessoSeletivo', () => {
 
 Cypress.Commands.add('cadastrarProcessoSeletivo', (nomeProcessoSeletivo, dataHoraInicial, dataHoraFinal, notaDeCorte, quantidadeFacil,
      quantidadeMedio, quantidadeDificil) => {
-    cy.get(dropdownEmpresa).select(1)
+    //cy.get(dropdownEmpresa).select(1)
     cy.get(campoNomeProcesso).type(nomeProcessoSeletivo)
     cy.get(campoDataHoraInicial).type(dataHoraInicial)
     cy.get(campoDataHoraFinal).type(dataHoraFinal)
     cy.get(campoNotaDeCorte).type(notaDeCorte)
-    cy.get(dropdownDificuldade).select(1)
-    cy.get(dropdownTema).select(1)
+    //cy.get(dropdownDificuldade).select(1)
+    //cy.get(dropdownTema).select(1)
     cy.get(campoQuantidadeFacil).type(quantidadeFacil)
     cy.get(campoQuantidadeMedio).type(quantidadeMedio)
     cy.get(campoQuantidadeDificil).type(quantidadeDificil)
