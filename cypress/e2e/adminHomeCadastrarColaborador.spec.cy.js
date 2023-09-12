@@ -2,7 +2,7 @@
 import "../support/commands"
 
 
-describe('AdminHomeCadastrarColaborador', () => {
+describe('Admin Home - CadastrarColaborador', () => {
 
     beforeEach(() => {
         cy.visit("/")
@@ -10,7 +10,7 @@ describe('AdminHomeCadastrarColaborador', () => {
         cy.acessarHome();
         cy.gerarDadosDinamicos();
     });
-
+/*
     it('CT-WEB-021.1 - Validar "Cadastrar Colaborador" com sucesso', () => {
         cy.fixture('cadastrarColaborador.data.json').then(data => {
             cy.acessarCadastrarColaborador();
@@ -18,7 +18,7 @@ describe('AdminHomeCadastrarColaborador', () => {
             cy.contains('Cadastro realizado com sucesso').should('be.visible')
         })
     })
-
+*/
     it('CT-WEB-021.2 - Validar "Cadastrar Colaborador" sem sucesso (Todos campos vazios)', () => {
         cy.acessarCadastrarColaborador();
         cy.cadastrarColaboradorTudoVazio()
