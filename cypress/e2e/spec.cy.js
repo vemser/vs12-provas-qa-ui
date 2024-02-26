@@ -1,5 +1,12 @@
+  /// <reference types="cypress" />
+
 describe('template spec', () => {
-  it('passes', () => {
-    cy.visit('https://example.cypress.io')
+
+  it('Test 1 - gerando dados', () => {
+    
+    cy.gerarDadosDeProcesso()
+    cy.gerarDadosDeUsuarios()
+
   })
+
 })

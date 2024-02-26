@@ -1,1 +1,3 @@
 node_modules
+**/cypress/fixtures/user.data.json
+**/cypress/fixtures/processo.data.json
