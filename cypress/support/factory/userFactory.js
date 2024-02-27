@@ -1,5 +1,6 @@
 import { faker } from '@faker-js/faker';
 
+const fakerBr = require('faker-br');
 
 Cypress.Commands.add('gerarDadosDeUsuarios', () => {
 
@@ -12,7 +13,7 @@ Cypress.Commands.add('gerarDadosDeUsuarios', () => {
         //Criando uma empresa com um Funcionário Gestor
         gestor: {
             "nome": faker.company.name(),
-            "cnpj": faker.number.int(),
+            "cnpj": fakerBr.br.cnpj(),
             "email": faker.internet.email(),
             "nomeFuncionario": faker.person.fullName()
         },
