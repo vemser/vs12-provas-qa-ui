@@ -21,13 +21,14 @@
   npm i
 ```
 
-5 - Rode os testes.
+4 - Instale o Allure CLI de forma global;
 ```bash
-  npx cypress run
+  npm i -g allure-commandline
 ```
-ou
+
+5 - Rode os testes com:
 ```bash
-  npx cypress open
+  npm run test:allure
 ```
 
 ## Features cobertas
