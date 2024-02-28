@@ -27,6 +27,10 @@ pipeline {
 
     post {
         always {
+            script {
+                sh "cp -r allure-results-ui/. allure-results/"
+                sh "cp -r allure-results-api/. allure-results/"
+            }
             allure([
                 includeProperties: false,
                 jdk: '',
