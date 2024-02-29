@@ -6,17 +6,20 @@ describe('landingPage', () => {
         cy.visit("/")
     });
 
-    it('Test 1 - Verificar todos os botões do Header', () => {
+    it('CT-WEB-001.0 - Verificar todos os botões do Header', () => {
         cy.verificarBtnHeader()
     })
 
-    it('Test 2 - Enviar uma mensagem com Sucesso', () => {
+    it('CT-WEB-001.1.0 - Validar formulário "Ficou com dúvida? Deixe uma mensagem" com sucesso', () => {
         cy.preencherFormularioDeixeSuaMensagemComDadosValidos()
     })
 
-    it('Test 3 - Fazer login com Sucesso', () => {
-        cy.fazerLogin()
-        cy.url().should('eq', 'http://vemser-dbc.dbccompany.com.br:39000/vemser/vs12-provas-front/dashboard')
+    it('CT-WEB-001.1.1 - Validar formulário "Ficou com dúvida? Deixe uma mensagem" sem dados', () => {
+        cy.enviarFormularioSemDados()
+    })
+
+    it('CT-WEB-001.1.2 - Validar formulário "Ficou com dúvida? Deixe uma mensagem" com dados Incompletos', () => {
+        cy.enviarFormularioComDadosIncompletos()
     })
 
 })

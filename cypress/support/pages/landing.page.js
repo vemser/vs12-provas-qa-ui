@@ -18,14 +18,18 @@ let txtSobre = '#cardchoose > h2'
 
 // Formulário Deixe uma mensagem
 let campoNome = '[data-testid="inputNameContact"]'
+let spanNomeContact = '#contact > form > span:nth-child(2)'
 let campoEmailMensagem = '[data-testid="inputEmailContact"]'
+let spanEmailContact = '#contact > form > span:nth-child(4)'
 let campoMensagem = '[data-testid="inputMessageContact"]'
+let spanMensagemContact = '#contact > form > span:nth-child(6)'
 let btnEnviar = '[data-testid="btnSubmitContact"]'
+let cardSucessoMensagem = '.Toastify__toast-body > :nth-child(2)'
+let txtSucessoMensagem = 'Contato enviado com sucesso!'
+let txtCampoObrigatorio = 'Campo Obrigatório'
+let txtLetraParaTesteInvalido = 'a'
 
-// Login
-let campoEmailLogin = '[data-testid="inputEmailLogin"]'
-let campoSenha = '[data-testid="inputPasswordLogin"]'
-let btnAcessar = '[data-testid="bntSubmitLogin"]'
+
 
 Cypress.Commands.add('verificarBtnHeader', () => {
     
@@ -52,13 +56,31 @@ Cypress.Commands.add('preencherFormularioDeixeSuaMensagemComDadosValidos', () =>
     cy.preencherCampo(campoNome, faker.person.firstName())
     cy.preencherCampo(campoEmailMensagem, faker.internet.email())
     cy.preencherCampo(campoMensagem, faker.lorem.paragraph())
+    cy.clicar(btnEnviar)
+    cy.contains(cardSucessoMensagem, txtSucessoMensagem)
+
 })
 
-Cypress.Commands.add('fazerLogin', () => {
+Cypress.Commands.add('enviarFormularioSemDados', () => {
     
-    cy.clicar(btnLogin)
-    cy.get(bntSubmitLogin).should('be.visible')
-    cy.preencherCampo(campoEmailLogin, Cypress.env('LOGIN_ADMIN'))
-    cy.preencherCampo(campoSenha, Cypress.env('SENHA_ADMIN'))
-    cy.clicar(btnAcessar)
+    cy.clicar(btnContato)
+    cy.clicar(btnEnviar)
+    cy.contains(spanNomeContact, txtCampoObrigatorio)
+    cy.contains(spanEmailContact, txtCampoObrigatorio)
+    cy.contains(spanMensagemContact, txtCampoObrigatorio)
+
 })
+
+Cypress.Commands.add('enviarFormularioComDadosIncompletos', () => {
+    
+    cy.clicar(btnContato)
+    cy.clicar(btnEnviar)
+    cy.preencherCampo(campoNome, txtLetraParaTesteInvalido)
+    cy.preencherCampo(campoEmailMensagem, txtLetraParaTesteInvalido)
+    cy.preencherCampo(campoMensagem, txtLetraParaTesteInvalido)
+    cy.contains(spanNomeContact, 'No mínimo 3 Caractéres')
+    cy.contains(spanEmailContact, 'Precisa ser um Email válido')
+    cy.contains(spanMensagemContact, 'Mínimo de 10 Caractéres')
+
+})
+
