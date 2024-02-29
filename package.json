@@ -12,7 +12,10 @@
     "dotenv": "^16.4.5",
     "faker": "^6.6.6",
     "faker-br": "^0.4.1",
-    "mocha-allure-reporter": "^1.4.0"
+    "imgur": "^2.4.2",
+    "imgur-uploader": "^4.2.1",
+    "mocha-allure-reporter": "^1.4.0",
+    "puppeteer": "^22.3.0"
   },
   "devDependencies": {
     "@faker-js/faker": "^8.4.1",
