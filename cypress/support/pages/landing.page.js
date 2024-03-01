@@ -15,6 +15,8 @@ let btnSetaParaCima = '[data-testid="btnToTop"]'
 // Textos do body
 let txtComoFunciona = '#operation > h2'
 let txtSobre = '#cardchoose > h2'
+let modalConverseEspecialistas = '#modal-modal-title'
+let txtmodalConverseEspecialistas = 'Converse com nosso especialistas!'
 
 // Formulário Deixe uma mensagem
 let campoNome = '[data-testid="inputNameContact"]'
@@ -83,4 +85,13 @@ Cypress.Commands.add('enviarFormularioComDadosIncompletos', () => {
     cy.contains(spanMensagemContact, 'Mínimo de 10 Caractéres')
 
 })
+
+Cypress.Commands.add('verificarBotaoConverseComNossaEquipe', () => {
+    //TO-DO criar variaveis para os selectors
+    cy.get('#tryit').scrollIntoView();
+    cy.get('#tryit > div > div > button').should('be.visible')
+    .clicar('#tryit > div > div > button')
+    cy.contains(modalConverseEspecialistas, txtmodalConverseEspecialistas)
+})
+
 

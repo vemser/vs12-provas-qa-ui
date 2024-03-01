@@ -22,4 +22,8 @@ describe('landingPage', () => {
         cy.enviarFormularioComDadosIncompletos()
     })
 
+    it('CT-WEB-001.2 - Clicar no botão "Converse com nossa equipe!" com sucesso', () => {
+        cy.verificarBotaoConverseComNossaEquipe()
+    })
+    
 })
