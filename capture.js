@@ -9,10 +9,6 @@ async function captureScreenshotAndUpload() {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
 
-    await page.goto('http://localhost:9090/login');
-    await page.type('#j_username', 'admin');
-    await page.type('#j_password', 'admin');
-    await page.click('form[name="login"] > button[type="submit"]'); 
     await page.setViewport({
         width: 1920,
         height: 1080,
