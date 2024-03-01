@@ -13,8 +13,8 @@ async function captureScreenshotAndUpload() {
         width: 1920,
         height: 1080,
     });
-    await new Promise(resolve => setTimeout(resolve, 15000));
     await page.goto(`https://deep-sunbird-heroic.ngrok-free.app/login`);
+    await new Promise(resolve => setTimeout(resolve, 15000));
     await page.screenshot({
         path: 'screenshot.png'
     });
