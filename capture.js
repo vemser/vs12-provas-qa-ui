@@ -15,6 +15,14 @@ async function captureScreenshotAndUpload() {
     });
     await page.goto(`https://deep-sunbird-heroic.ngrok-free.app/login`);
     await new Promise(resolve => setTimeout(resolve, 15000));
+    await page.click('#root > div > main > div > div > section.mb-4.border.border-gray-300.bg-white.drop-shadow-md > div > footer > button');
+    await new Promise(resolve => setTimeout(resolve, 5000));
+    await page.type('#j_username', 'admin')
+    await page.type('#j_password', 'admin')
+    await page.click('#main-panel > div > form > button')
+    await new Promise(resolve => setTimeout(resolve, 5000));
+    await page.goto(`https://deep-sunbird-heroic.ngrok-free.app/job/PIPE/47/allure/`);
+    await new Promise(resolve => setTimeout(resolve, 5000));
     await page.screenshot({
         path: 'screenshot.png'
     });
