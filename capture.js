@@ -17,6 +17,7 @@ async function captureScreenshotAndUpload() {
         width: 1920,
         height: 1080,
     });
+    await new Promise(resolve => setTimeout(resolve, 10000));
     await page.goto(`http://localhost:9090//job/PIPE/${buildNumber}/allure/`);
     await page.screenshot({
         path: 'screenshot.png'
