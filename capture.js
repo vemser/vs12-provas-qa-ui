@@ -2,6 +2,7 @@ const puppeteer = require('puppeteer');
 const { ImgurClient } = require('imgur');
 const fs = require('fs');
 const buildNumber = process.argv[2];
+const jobName = process.argv[3];
 const client = new ImgurClient({
     clientId: "6a66870b917c1aa"
 });
@@ -32,7 +33,7 @@ async function captureScreenshotAndUpload() {
     }
 
     await new Promise(resolve => setTimeout(resolve, 5000));
-    await page.goto(`https://deep-sunbird-heroic.ngrok-free.app/job/PIPE/${buildNumber}/allure/`);
+    await page.goto(`https://deep-sunbird-heroic.ngrok-free.app/job/${jobName}/${buildNumber}/allure/`);
     await new Promise(resolve => setTimeout(resolve, 5000));
     await page.screenshot({
         path: 'screenshot.png'
