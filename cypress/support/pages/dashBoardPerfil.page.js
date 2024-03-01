@@ -1,11 +1,11 @@
 import { faker } from '@faker-js/faker';
 
 // seção configurações do perfil
-let inputNomeCompleto = ''
-let inputEmail = ''
-let inputSenha = ''
-let btnVisibilidadeSenha = ''
-let btnEditar = ''
-let btnCancelar = ''
+let inputNomeCompleto = '#nome'
+let inputEmail = '#email'
+let inputSenha = '#senha'
+let btnVisibilidadeSenha = '#root > section > main > section > form > div.sc-jfLZDZ.jvaXGU > div'
+let btnEditar = '#btnEditar'
+let btnCancelar = '#btnCancelar'
 
-let popEditarSucesso = '#\\31  > div.Toastify__toast-body > div:nth-child(2)'
+let popBtnResult = '#\\31  > div.Toastify__toast-body > div:nth-child(2)'
