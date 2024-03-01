@@ -17,7 +17,7 @@ async function captureScreenshotAndUpload() {
         width: 1920,
         height: 1080,
     });
-    await page.goto(`http://localhost:9090//job/PIPE/${BUILD_NUMBER}/allure/`);
+    await page.goto(`http://localhost:9090//job/PIPE/${buildNumber}/allure/`);
     await page.screenshot({
         path: 'screenshot.png'
     });
