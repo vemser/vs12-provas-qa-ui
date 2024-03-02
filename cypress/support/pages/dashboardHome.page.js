@@ -4,15 +4,20 @@ let tituloH3Cadastros = '#root > section > main > section.sc-jdkVqZ.yYmgc > h3:n
 let tituloH3Listagens = '#root > section > main > section.sc-jdkVqZ.yYmgc > h3:nth-child(3)'
 
 // Botões Cadastro
-let btnColaboradorCadastro = '#root > section > main > section.sc-jdkVqZ.yYmgc > div:nth-child(2) > button:nth-child(1)'
-let btnCandidatoCadastro ='#root > section > main > section.sc-jdkVqZ.yYmgc > div:nth-child(2) > button:nth-child(2)'
-let btnEmpresaCadastro ='#root > section > main > section.sc-jdkVqZ.yYmgc > div:nth-child(2) > button:nth-child(3)'
+let btnColaboradorCadastro = '[aria-label="Colaborador"]'
+let btnCandidatoCadastro ='[aria-label="Candidato"]'
+let btnEmpresaCadastro ='[aria-label="Empresa"]'
 let btnQuestoesCadastro ='#root > section > main > section.sc-jdkVqZ.yYmgc > div:nth-child(2) > button:nth-child(4)'
-let btnProcessoSeletivoCadastro ='#root > section > main > section.sc-jdkVqZ.yYmgc > div:nth-child(2) > button:nth-child(5)'
+let btnProcessoSeletivoCadastro ='[aria-label="Processo Seletivo"]'
 
 // Botões Listagem
-let btnColaboradorListagem = '#root > section > main > section.sc-jdkVqZ.yYmgc > div:nth-child(4) > button:nth-child(1)'
-let btnCandidatoListagem ='#root > section > main > section.sc-jdkVqZ.yYmgc > div:nth-child(4) > button:nth-child(2)'
-let btnEmpresaListagem ='#root > section > main > section.sc-jdkVqZ.yYmgc > div:nth-child(4) > button:nth-child(3)'
+let btnColaboradorListagem = '[aria-label="Colaboradores"]'
+let btnCandidatoListagem ='[aria-label="Candidatos"]'
+let btnEmpresaListagem ='[aria-label="Empresas"]'
 let btnQuestoesListagem ='#root > section > main > section.sc-jdkVqZ.yYmgc > div:nth-child(4) > button:nth-child(4)'
-let btnProcessoSeletivoListagem ='#root > section > main > section.sc-jdkVqZ.yYmgc > div:nth-child(4) > button:nth-child(5)'
+
+
+Cypress.Commands.add('clicarNoColaborador', () => {
+    
+    cy.clicar(btnColaborador)
+})
