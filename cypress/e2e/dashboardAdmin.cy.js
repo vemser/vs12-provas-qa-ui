@@ -7,7 +7,7 @@ describe('loginPage', () => {
         cy.gerarDadosDeUsuarios()
         cy.gerarDadosDeProcesso()
         cy.gerarDadosDeQuestao()
-        cy.fazerLogin()
+        cy.fazerLogin("ADMIN")
     });
 
     it('CT-WEB-004.0 - Validar cadastro de funcionario com sucesso', () => {
@@ -37,5 +37,12 @@ describe('loginPage', () => {
         cy.cadastrarProvaComDadosValidos()
     })
 
+
+    it('CT-WEB-004.4 - Validar edição de usuário com sucesso', () => {
+        // cy.url().should('eq', 'http://vemser-dbc.dbccompany.com.br:39000/vemser/vs12-provas-front/dashboard')
+        cy.url().should('eq', 'https://provas-front.vercel.app/dashboard')
+        cy.acessarConfiguracaoDoPerfilPeloMenuPerfil()
+        cy.editarPerfilComDadosValidos()
+    })
     
 })

@@ -12,12 +12,13 @@ let spanInserirSenhaValido = '#root > div > main > fieldset > form > div.passwor
 let txtInserirEmailValido = 'Insira um e-mail valido'
 let txtInserirSenhaValida = 'A senha deve conter no mínimo, 6 caractéres, incluindo 1 letra maiúscula, 1 minúscula e 1 número'
 
-Cypress.Commands.add('fazerLogin', () => {
+Cypress.Commands.add('fazerLogin', (usuario) => {
     
     cy.clicar(btnLogin)
     cy.get(btnEntrar).should('be.visible')
-    cy.preencherCampo(campoEmailLogin, Cypress.env('LOGIN_ADMIN'))
-    cy.preencherCampo(campoSenha, Cypress.env('SENHA_ADMIN'))
+    // usuario é o tipo de usuario que está logando podendo ser: ADMIN,GESTOR,MODERADOR e CANDIDATO
+    cy.preencherCampo(campoEmailLogin, Cypress.env(`LOGIN_${usuario}`))
+    cy.preencherCampo(campoSenha, Cypress.env(`SENHA_${usuario}`))
     cy.clicar(btnEntrar)
 })
 
