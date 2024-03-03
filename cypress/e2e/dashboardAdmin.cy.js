@@ -6,6 +6,7 @@ describe('loginPage', () => {
         cy.visit("/")
         cy.gerarDadosDeUsuarios()
         cy.gerarDadosDeProcesso()
+        cy.gerarDadosDeQuestao()
         cy.fazerLogin()
     });
 
@@ -28,4 +29,13 @@ describe('loginPage', () => {
         cy.url().should('eq', 'https://provas-front.vercel.app/dashboard')
         cy.acessarListagemDeColaboradoresPeloMenuEmpresas()
     })
+
+    it.only('CT-WEB-004.3 - Validar cadastro de questão com sucesso', () => {
+        // cy.url().should('eq', 'http://vemser-dbc.dbccompany.com.br:39000/vemser/vs12-provas-front/dashboard')
+        cy.url().should('eq', 'https://provas-front.vercel.app/dashboard')
+        cy.acessarCadastroDeQuestãoPeloMenuProvas()
+        cy.cadastrarProvaComDadosValidos()
+    })
+
+    
 })

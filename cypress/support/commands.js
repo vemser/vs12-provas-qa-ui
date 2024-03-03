@@ -1,5 +1,6 @@
 import '../support/factory/processoFactory'
 import '../support/factory/userFactory'
+import '../support/factory/questaoFactory'
 import '../support/pages/base.page'
 import '../support/pages/landing.page'
 import '../support/pages/login.page'
