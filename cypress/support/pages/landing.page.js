@@ -83,7 +83,7 @@ Cypress.Commands.add('enviarFormularioComDadosIncompletos', () => {
     cy.preencherCampo(campoMensagem, txtLetraParaTesteInvalido)
     cy.contains(spanNomeContact, 'No mínimo 3 Caractéres')
     cy.contains(spanEmailContact, 'Precisa ser um Email válido')
-    cy.contains(spanMensagemContact, 'Mínimo de 10 Caractéres')
+    cy.contains(spanMensagemContact, 'Mínimo de 10 Caracteres')
 
 })
 
