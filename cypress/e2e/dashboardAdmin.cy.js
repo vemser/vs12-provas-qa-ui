@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe('dashboardAdmin', () => {
+describe('CT-WEB-04 - DashboardAdmin', () => {
 
     beforeEach(() => {
         cy.visit("/")
