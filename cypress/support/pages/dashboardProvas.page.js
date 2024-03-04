@@ -29,6 +29,11 @@ let btnAdicionarAlternativa = '[data-testid="btnAddAltQuestion"]'
 let btnCadastrar = '[data-testid="btnRegisterQuestion"]'
 let btnCancelar = '[data-testid="btnCancelar"]'
 
+let spanTituloInvalido = '#root > section > main > form > p:nth-child(5)'
+let spanDificuldadeInvalida = '#root > section > main > form > p:nth-child(12)'
+let spanEnunciadoInvalido = '#root > section > main > form > p:nth-child(15)'
+
+let msgmCampoObrigatorio = 'CAMPO OBRIGATÓRIO'
 
 Cypress.Commands.add('acessarCadastroDeQuestãoPeloMenuProvas', () => {
     
@@ -65,3 +70,64 @@ Cypress.Commands.add('acessarListagemDeQuestãoPeloMenuProvas', () => {
     cy.contains(primeiraQuestao, 'O que é Java?')
 })
 
+Cypress.Commands.add('tentarCadastrarProvaComTituloInvalido', () => {
+    cy.lerArquivo("questao.data.json").then((data) => {
+        data = data.questao
+        cy.preencherCampo(campoTitulo, " ")
+        cy.wait(8000)
+        cy.selecionarOpcao(campoTema, data.tema)
+        cy.selecionarOpcao(campoDificuldade, data.dificuldade)
+        cy.preencherCampo(campoEnunciado, data.enunciado)
+        .clicar(btnAdicionarAlternativa)
+        cy.preencherCampo(campoAlternativa01, data.alternativa01)
+        cy.preencherCampo(campoAlternativa02, data.alternativa02)
+        cy.preencherCampo(campoAlternativa03, data.alternativa02)
+        .clicar(`:nth-child(${data.correta}) > label`)
+    })
+    cy.clicar(btnCadastrar)
+})
+
+Cypress.Commands.add('tentarCadastrarProvaSemSelecionarTema', () => {
+    cy.lerArquivo("questao.data.json").then((data) => {
+        data = data.questao
+        cy.preencherCampo(campoTitulo, data.titulo)
+        cy.wait(8000)
+        cy.selecionarOpcao(campoDificuldade, data.dificuldade)
+        cy.preencherCampo(campoEnunciado, data.enunciado)
+        .clicar(btnAdicionarAlternativa)
+        cy.preencherCampo(campoAlternativa01, data.alternativa01)
+        cy.preencherCampo(campoAlternativa02, data.alternativa02)
+        cy.preencherCampo(campoAlternativa03, data.alternativa02)
+        .clicar(`:nth-child(${data.correta}) > label`)
+    })
+    cy.clicar(btnCadastrar)
+})
+
+Cypress.Commands.add('tentarCadastrarProvaSemEnunciado', () => {
+    cy.lerArquivo("questao.data.json").then((data) => {
+        data = data.questao
+        cy.preencherCampo(campoTitulo, data.titulo)
+        cy.wait(8000)
+        cy.selecionarOpcao(campoTema, data.tema)
+        cy.selecionarOpcao(campoDificuldade, data.dificuldade)
+        cy.clicar(btnAdicionarAlternativa)
+        cy.preencherCampo(campoAlternativa01, data.alternativa01)
+        cy.preencherCampo(campoAlternativa02, data.alternativa02)
+        cy.preencherCampo(campoAlternativa03, data.alternativa02)
+        .clicar(`:nth-child(${data.correta}) > label`)
+    })
+    cy.clicar(btnCadastrar)
+})
+
+Cypress.Commands.add('tentarCadastrarProvaSemCriarAlternativas', () => {
+    cy.lerArquivo("questao.data.json").then((data) => {
+        data = data.questao
+        cy.preencherCampo(campoTitulo, " ")
+        cy.wait(8000)
+        cy.selecionarOpcao(campoTema, data.tema)
+        cy.selecionarOpcao(campoDificuldade, data.dificuldade)
+        cy.preencherCampo(campoEnunciado, data.enunciado)
+        .clicar(btnAdicionarAlternativa)
+    })
+    cy.clicar(btnCadastrar)
+})

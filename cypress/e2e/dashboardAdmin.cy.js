@@ -43,4 +43,25 @@ describe('CT-WEB-04 - DashboardAdmin', () => {
     it('CT-WEB-004.5 - Validar listagem de questões com sucesso', () => {
         cy.acessarListagemDeQuestãoPeloMenuProvas()
     })
+
+    it('CT-WEB-004.6 - Validar cadastro de questão sem título sem sucesso', () => {
+        cy.acessarCadastroDeQuestãoPeloMenuProvas()
+        cy.tentarCadastrarProvaComTituloInvalido()
+    })
+
+    it('CT-WEB-004.7 - Validar cadastro de questão sem selecionar tema sem sucesso', () => {
+        cy.acessarCadastroDeQuestãoPeloMenuProvas()
+        cy.tentarCadastrarProvaSemSelecionarTema()
+    })
+
+    it('CT-WEB-004.8 - Validar cadastro de questão sem digitar enunciado sem sucesso', () => {
+        cy.acessarCadastroDeQuestãoPeloMenuProvas()
+        cy.tentarCadastrarProvaSemEnunciado()
+    })
+    
+    it('CT-WEB-004.9 - Validar cadastro de questão sem preencher campo alternativas', () => {
+        cy.acessarCadastroDeQuestãoPeloMenuProvas()
+        cy.tentarCadastrarProvaSemCriarAlternativas()
+    })
+    
 })
