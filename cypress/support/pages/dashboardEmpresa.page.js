@@ -14,7 +14,7 @@ let btnProcessoSeletivoCadastro ='[data-testid="btnProcessRegister"]'
 let btnColaboradorListagem = '[data-testid="btnEmployeeList"]'
 
 // Navbar Menu
-let btnMenuEmpresas = '[href="/vemser/vs12-provas-front/dashboard/empresa"]'
+let btnMenuEmpresas = '.sc-oASGG > [href="/vemser/vs12-provas-front/dashboard/empresa"]'
 // let btnMenuEmpresas = '[href="/dashboard/empresa"]'
 
 // Cadastro Colaborador Campos
@@ -42,7 +42,7 @@ let campoQntPerguntasMedias= '[data-testid="inputQtMedio"]'
 let campoQntPerguntasDificeis = '[data-testid="inputQtDifil"]'
 
 // Cadastro Processo Botões
-let btnAdicionar = '#root > section > main > form > div.sc-khksUn.sc-hTJqdO.foxlTA.cSYAZP > button'
+let btnAdicionar = '[data-testid="btnAddTheme"]'
 btnCadastrar = '[data-testid="btnCadastrar"]'
 btnCancelar = '[data-testid="btnCancelar"]'
 
@@ -51,8 +51,8 @@ let quantidadeObjetivas = 0
 let quantidadeTecnicas = 0
 
 // Listagem Colaboradores
-let tituloPagina = '#root > section > main > h1'
-let colaboradorExemplo = '.MuiTableBody-root > :nth-child(1) > th.MuiTableCell-root'
+let tituloPagina = '[data-testid="employeesListTitle"]'
+let empresaExemplo = '.MuiTableBody-root > :nth-child(1) > :nth-child(3)'
 
 // Model Feedback
 let modelFeedback = '.Toastify__toast-body > :nth-child(2)'
@@ -83,24 +83,6 @@ Cypress.Commands.add('acessarCadastroDeProcessoPeloMenuEmpresas', () => {
     cy.contains(tituloH2Empresa, 'Empresa')
     cy.clicar(btnProcessoSeletivoCadastro)
     cy.contains(tituloH2CadastrarForm, 'Cadastrar Processo Seletivo')
-})
-
-Cypress.Commands.add('divisaoDeObjetivasETecnicas', () => {
-    cy.lerArquivo("processo.data.json").then((data) => {
-        data = data.processo
-        let soma = data.quantidadeFacil + data.quantidadeMedio + data.quantidadeDificil
-        let divisao
-        if (soma % 2 == 0){
-            divisao = soma / 2
-            quantidadeObjetivas = divisao
-            quantidadeTecnicas = divisao
-        }else{
-            soma -= 1
-            divisao = soma / 2
-            quantidadeObjetivas = divisao + 1
-            quantidadeTecnicas = divisao
-        }
-    })
 })
 
 Cypress.Commands.add('cadastrarProcessoComDadosValidos', () => {
@@ -143,6 +125,6 @@ Cypress.Commands.add('acessarListagemDeColaboradoresPeloMenuEmpresas', () => {
     cy.clicar(btnMenuEmpresas)
     cy.contains(tituloH2Empresa, 'Empresa')
     cy.clicar(btnColaboradorListagem)
-    cy.contains(tituloPagina, 'LISTA DE COLABORADORES')
-    cy.contains(colaboradorExemplo, 'Lucas Gabriel')
+    cy.contains(tituloPagina, 'Lista de Colaboradores')
+    cy.contains(empresaExemplo, 'GERAL')
 })

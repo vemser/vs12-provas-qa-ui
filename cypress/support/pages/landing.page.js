@@ -64,6 +64,68 @@ Cypress.Commands.add('preencherFormularioDeixeSuaMensagemComDadosValidos', () =>
 
 })
 
+Cypress.Commands.add('preencherFormularioDeixeSuaMensagemApenasComNome', () => {
+    
+    cy.clicar(btnContato)
+    cy.get(btnEnviar).should('be.visible')
+    cy.preencherCampo(campoNome, faker.person.firstName())
+    cy.clicar(btnEnviar)
+    cy.contains('#contact > form > span:nth-child(3)', txtCampoObrigatorio)
+    cy.contains('#contact > form > span:nth-child(5)', txtCampoObrigatorio)
+
+})
+
+Cypress.Commands.add('preencherFormularioDeixeSuaMensagemApenasComEmail', () => {
+    
+    cy.clicar(btnContato)
+    cy.get(btnEnviar).should('be.visible')
+    cy.preencherCampo(campoEmailMensagem, faker.internet.email())
+    cy.clicar(btnEnviar)
+    cy.contains('#contact > form > span:nth-child(2)', txtCampoObrigatorio)
+    cy.contains('#contact > form > span:nth-child(5)', txtCampoObrigatorio)
+
+})
+
+Cypress.Commands.add('preencherFormularioDeixeSuaMensagemApenasComMensagem', () => {
+    
+    cy.clicar(btnContato)
+    cy.preencherCampo(campoMensagem, faker.lorem.paragraph())
+    cy.clicar(btnEnviar)
+    cy.contains(spanNomeContact, txtCampoObrigatorio)
+    cy.contains(spanEmailContact, txtCampoObrigatorio)
+
+})
+
+Cypress.Commands.add('preencherFormularioDeixeSuaMensagemSemNome', () => {
+    
+    cy.clicar(btnContato)
+    cy.preencherCampo(campoEmailMensagem, faker.internet.email())
+    cy.preencherCampo(campoMensagem, faker.lorem.paragraph())
+    cy.clicar(btnEnviar)
+    cy.contains('#contact > form > span', txtCampoObrigatorio)
+
+})
+
+Cypress.Commands.add('preencherFormularioDeixeSuaMensagemSemEmail', () => {
+    
+    cy.clicar(btnContato)
+    cy.preencherCampo(campoNome, faker.person.firstName())
+    cy.preencherCampo(campoMensagem, faker.lorem.paragraph())
+    cy.clicar(btnEnviar)
+    cy.contains('#contact > form > span', txtCampoObrigatorio)
+
+})
+
+Cypress.Commands.add('preencherFormularioDeixeSuaMensagemSemMensagem', () => {
+    
+    cy.clicar(btnContato)
+    cy.preencherCampo(campoNome, faker.person.firstName())
+    cy.preencherCampo(campoEmailMensagem, faker.internet.email())
+    cy.clicar(btnEnviar)
+    cy.contains('#contact > form > span', txtCampoObrigatorio)
+
+})
+
 Cypress.Commands.add('enviarFormularioSemDados', () => {
     
     cy.clicar(btnContato)

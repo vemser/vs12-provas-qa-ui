@@ -31,6 +31,26 @@ Cypress.Commands.add('fazerLoginSemDados', () => {
 
 })
 
+Cypress.Commands.add('fazerLoginSemEmail', (usuario) => {
+    
+    cy.clicar(btnLogin)
+    cy.get(btnEntrar).should('be.visible')
+    cy.preencherCampo(campoSenha, Cypress.env(`SENHA_${usuario}`))
+    cy.clicar(btnEntrar)
+    cy.contains(spanInserirEmailValido, txtCampoObrigatorio)
+
+})
+
+Cypress.Commands.add('fazerLoginSemSenha', (usuario) => {
+    
+    cy.clicar(btnLogin)
+    cy.get(btnEntrar).should('be.visible')
+    cy.preencherCampo(campoEmailLogin, Cypress.env(`LOGIN_${usuario}`))
+    cy.clicar(btnEntrar)
+    cy.contains(spanInserirSenhaValido, txtCampoObrigatorio)
+
+})
+
 Cypress.Commands.add('fazerLoginComDadosInvalidos', () => {
     
     cy.clicar(btnLogin)
