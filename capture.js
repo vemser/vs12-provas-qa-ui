@@ -4,8 +4,9 @@ const fs = require('fs');
 const buildNumber = process.argv[2];
 const jobName = process.argv[3];
 const client = new ImgurClient({
-    clientId: "6a66870b917c1aa"
+    clientId: process.env.IMGUR_CLIENT_ID
 });
+const dominio = process.env.DOMINIO_APP;
 async function captureScreenshotAndUpload() {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
@@ -14,16 +15,14 @@ async function captureScreenshotAndUpload() {
         width: 1920,
         height: 1080,
     });
-    await page.goto(`https://deep-sunbird-heroic.ngrok-free.app/login`);
+    await page.goto(process.env.DOMINIO_APP_LOGIN);
     await new Promise(resolve => setTimeout(resolve, 15000));
-    // clicar no botão do ngrok
     try {
         await page.click('#root > div > main > div > div > section.mb-4.border.border-gray-300.bg-white.drop-shadow-md > div > footer > button');
     } catch (error) {
         console.log(error)
     }
     await new Promise(resolve => setTimeout(resolve, 5000));
-    // tenta fazer login no jenkins
     try {
         await page.type('#j_username', 'admin')
         await page.type('#j_password', 'admin')
@@ -33,7 +32,7 @@ async function captureScreenshotAndUpload() {
     }
 
     await new Promise(resolve => setTimeout(resolve, 5000));
-    await page.goto(`https://deep-sunbird-heroic.ngrok-free.app/job/${jobName}/${buildNumber}/allure/`);
+    await page.goto(`${dominio}/job/${jobName}/${buildNumber}/allure/`);
     await new Promise(resolve => setTimeout(resolve, 5000));
     await page.screenshot({
         path: 'screenshot.png'
@@ -46,4 +45,5 @@ async function captureScreenshotAndUpload() {
     await browser.close();
     return response.data.link;
 }
+
 captureScreenshotAndUpload();

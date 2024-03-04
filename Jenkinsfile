@@ -4,41 +4,94 @@ pipeline {
     tools {
         maven "MAVEN"
         nodejs "NODE"
+        git "GIT"
     }
     
+    environment {
+        EMAIL_ADM=
+        SENHA_ADM=
+        
+        LOGIN_ADMIN=
+        SENHA_ADMIN=
+        
+        LOGIN_MODERADOR=
+        SENHA_MODERADOR=
+        
+        LOGIN_CANDIDATO=
+        SENHA_CANDIDATO=
+        
+        LOGIN_JENK=
+        SENHA_JENK=
+        
+        LOGIN_GESTOR=
+        EMAIL_GESTOR=
+        SENHA_GESTOR=
+
+        IMGUR_LINK=
+        IMGUR_CLIENT_ID=
+    }
+
     stages {
         stage('Rodar testes UI') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: 'refactor/estrutura-projeto']], userRemoteConfigs: [[url: 'https://github.com/vemser/vs12-provas-qa-ui']]])
-                sh "npm i"
-                sh "npm i -g allure-commandline"
-                sh "npx cypress run --reporter mocha-allure-reporter"
-                sh "npx allure generate --clean -o allure-results-ui"
+                script {
+                    try {
+                        checkout([$class: 'GitSCM', branches: [[name: 'refactor/estrutura-projeto']], userRemoteConfigs: [[url: 'https://github.com/vemser/vs12-provas-qa-ui']]])
+                        sh "npm i"
+                        sh "npm i -g allure-commandline"
+                        sh "npx cypress run --reporter mocha-allure-reporter"
+                        sh "npx allure generate --clean"
+                        def resultUI = currentBuild.result
+                    } catch (Exception e) {
+                        currentBuild.result = 'FAILURE'
+                        echo "Erro ao executar testes UI: ${e.message}"
+                    }
+                }
             }
         }
         stage('Rodar testes API') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: 'develop']], userRemoteConfigs: [[url: 'https://github.com/vemser/vs12-provas-qa-api']]])
-                sh "mvn clean test"
-                sh "allure generate --clean -o allure-results-api"
+                script {
+                    try {
+                        dir('vs-12-provas-qa-api') {
+                            checkout([$class: 'GitSCM', branches: [[name: 'develop']], userRemoteConfigs: [[url: 'https://github.com/vemser/vs12-provas-qa-api']]])
+                            sh "mvn clean test"
+                            sh "allure generate --clean -o allure-results"
+                            def resultAPI = currentBuild.result
+                        }
+                    } catch (Exception e) {
+                        currentBuild.result = 'FAILURE'
+                        echo "Erro ao executar testes API: ${e.message}"
+                    }
+                }
             }
         }
     }
 
     post {
         always {
-            script {
-                sh "cp -r allure-results-ui/. allure-results/"
-                sh "cp -r allure-results-api/. allure-results/"
-            }
+
             allure([
                 includeProperties: false,
                 jdk: '',
                 properties: [],
                 reportBuildPolicy: 'ALWAYS',
-                results: [[path: 'allure-results']]
+                results: [[path: 'allure-results'],
+                        [path: 'vs-12-provas-qa-api/allure-results']]
             ])
+            script {
+                def imgurLink = sh(script: "node capture.js ${BUILD_NUMBER} ${JOB_NAME}", returnStdout: true).trim()
+                IMGUR_LINK = imgurLink
+                def fowardNgrok = "http://localhost/8080/job/" + JOB_NAME + "/" + BUILD_NUMBER + "/allure/" // deve inserir o dominio do link público do report
+                discordSend(
+                    description: "Report atualizado - Clique no link",
+                        link: fowardNgrok,
+                        result: currentBuild.currentResult,
+                        title: "[LINK] Pipeline: Testes API & UI | Job: develop | Build: #${BUILD_NUMBER}",
+                        webhookURL: "https://discord.com/api/webhooks/ / ", // deve ser preenchido com webhook do canal do discord
+                        image: "${IMGUR_LINK}"
+                )
+            }
         }
     }
-
 }
