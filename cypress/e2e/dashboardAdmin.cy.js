@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe('loginPage', () => {
+describe('dashboardAdmin', () => {
 
     beforeEach(() => {
         cy.visit("/")
