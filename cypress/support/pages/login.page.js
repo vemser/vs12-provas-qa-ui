@@ -9,8 +9,7 @@ let modalMensagem = '.Toastify__toast-body > :nth-child(2)'
 
 let spanInserirEmailValido = '#root > div > main > fieldset > form > div:nth-child(1) > p'
 let spanInserirSenhaValido = '#root > div > main > fieldset > form > div.password > p'
-let txtInserirEmailValido = 'Insira um e-mail valido'
-let txtInserirSenhaValida = 'A senha deve conter no mínimo, 6 caractéres, incluindo 1 letra maiúscula, 1 minúscula e 1 número'
+let txtCampoObrigatorio = 'Campo obrigatório'
 
 Cypress.Commands.add('fazerLogin', (usuario) => {
     
@@ -27,8 +26,8 @@ Cypress.Commands.add('fazerLoginSemDados', () => {
     cy.clicar(btnLogin)
     cy.get(btnEntrar).should('be.visible')
     cy.clicar(btnEntrar)
-    cy.contains(spanInserirEmailValido, txtInserirEmailValido)
-    cy.contains(spanInserirSenhaValido, txtInserirSenhaValida)
+    cy.contains(spanInserirEmailValido, txtCampoObrigatorio)
+    cy.contains(spanInserirSenhaValido, txtCampoObrigatorio)
 
 })
 

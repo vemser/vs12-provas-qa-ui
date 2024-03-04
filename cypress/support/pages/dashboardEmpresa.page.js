@@ -7,15 +7,15 @@ let tituloH3Listagens = '#root > section > main > section > h3:nth-child(3)'
 
 //TO-DO: mudar nome de data-tesid para data-testid assim que o front subir o deploy
 // Botões Cadastro
-let btnColaboradorCadastro = '[data-tesid="btnCandidateRegister"]' //TO-DO: mudar nome de botão assim que realizar a mudança do front (btnEmployeeRegister)
-let btnProcessoSeletivoCadastro ='[data-tesid="btnProcessRegister"]'
+let btnColaboradorCadastro = '[data-testid="btnEmployeeRegister"]' //TO-DO: mudar nome de botão assim que realizar a mudança do front (btnEmployeeRegister)
+let btnProcessoSeletivoCadastro ='[data-testid="btnProcessRegister"]'
 
 // Botões Listagem
-let btnColaboradorListagem = '[data-tesid="btnEmployeeList"]'
+let btnColaboradorListagem = '[data-testid="btnEmployeeList"]'
 
 // Navbar Menu
-//let btnMenuEmpresas = '[href="/vemser/vs12-provas-front/dashboard/empresa"]'
-let btnMenuEmpresas = '[href="/dashboard/empresa"]'
+let btnMenuEmpresas = '[href="/vemser/vs12-provas-front/dashboard/empresa"]'
+// let btnMenuEmpresas = '[href="/dashboard/empresa"]'
 
 // Cadastro Colaborador Campos
 let campoEmpresa = '[data-testid="inputFormEmpresa"]'
@@ -35,9 +35,20 @@ let campoDataFinal = '[data-testid="inputDataFinal"]'
 let campoNotaDeCorte = '[data-testid="inputNotaCote"]'
 let campoDificuldade = '[data-testid="selectDificuldadeQuestao"]'
 let campoTema = '[data-testid="selectIdsTemas"]'
+let campoObjetivas = '[data-testid="inputqtdObjetivas"]'
+let campoTecnicas = '[data-testid="inputqtdTecnicas"]'
 let campoQntPerguntasFaceis = '[data-testid="inputqtdFacil"]'
 let campoQntPerguntasMedias= '[data-testid="inputQtMedio"]'
 let campoQntPerguntasDificeis = '[data-testid="inputQtDifil"]'
+
+// Cadastro Processo Botões
+let btnAdicionar = '#root > section > main > form > div.sc-khksUn.sc-hTJqdO.foxlTA.cSYAZP > button'
+btnCadastrar = '[data-testid="btnCadastrar"]'
+btnCancelar = '[data-testid="btnCancelar"]'
+
+// Cadastro Processo Variáveis
+let quantidadeObjetivas = 0
+let quantidadeTecnicas = 0
 
 // Listagem Colaboradores
 let tituloPagina = '#root > section > main > h1'
@@ -63,7 +74,7 @@ Cypress.Commands.add('cadastrarColaboradorComDadosValidos', () => {
         cy.selecionarOpcao(campoCargo, data.cargo)
     })
     cy.clicar(btnCadastrar)
-    cy.wait(8000);
+    cy.wait(8000)
     cy.contains(modelFeedback, txtModelFeedback)
 })
 
@@ -74,16 +85,53 @@ Cypress.Commands.add('acessarCadastroDeProcessoPeloMenuEmpresas', () => {
     cy.contains(tituloH2CadastrarForm, 'Cadastrar Processo Seletivo')
 })
 
+Cypress.Commands.add('divisaoDeObjetivasETecnicas', () => {
+    cy.lerArquivo("processo.data.json").then((data) => {
+        data = data.processo
+        let soma = data.quantidadeFacil + data.quantidadeMedio + data.quantidadeDificil
+        let divisao
+        if (soma % 2 == 0){
+            divisao = soma / 2
+            quantidadeObjetivas = divisao
+            quantidadeTecnicas = divisao
+        }else{
+            soma -= 1
+            divisao = soma / 2
+            quantidadeObjetivas = divisao + 1
+            quantidadeTecnicas = divisao
+        }
+    })
+})
+
 Cypress.Commands.add('cadastrarProcessoComDadosValidos', () => {
     cy.lerArquivo("processo.data.json").then((data) => {
         data = data.processo
+        let soma = data.quantidadeFacil + data.quantidadeMedio + data.quantidadeDificil
+        let divisao
+        if (soma % 2 == 0){
+            divisao = soma / 2
+            quantidadeObjetivas = divisao
+            quantidadeTecnicas = divisao
+        }else{
+            soma -= 1
+            divisao = soma / 2
+            quantidadeObjetivas = divisao + 1
+            quantidadeTecnicas = divisao
+        }
         cy.selecionarOpcao(campoEmpresa, data.empresa)
         cy.preencherCampo(campoNomeProcessoSeletivo, data.nomeProcessoSeletivo)
         cy.preencherCampo(campoDataInicial, data.dataHoraInicial)
         cy.preencherCampo(campoDataFinal, data.dataHoraFinal)
         cy.preencherCampo(campoNotaDeCorte, data.notaDeCorte)
         cy.selecionarOpcao(campoDificuldade, data.dificuldade)
-        cy.selecionarOpcao(campoTema, data.tema)
+        cy.selecionarOpcao(campoTema, data.tema01)
+        cy.clicar(btnAdicionar)
+        cy.selecionarOpcao(campoTema, data.tema02)
+        cy.clicar(btnAdicionar)
+        cy.selecionarOpcao(campoTema, data.tema03)
+        cy.clicar(btnAdicionar)
+        cy.preencherCampo(campoObjetivas, quantidadeObjetivas)
+        cy.preencherCampo(campoTecnicas, quantidadeTecnicas)
         cy.preencherCampo(campoQntPerguntasFaceis, data.quantidadeFacil)
         cy.preencherCampo(campoQntPerguntasMedias, data.quantidadeMedio)
         cy.preencherCampo(campoQntPerguntasDificeis, data.quantidadeDificil)
@@ -95,6 +143,6 @@ Cypress.Commands.add('acessarListagemDeColaboradoresPeloMenuEmpresas', () => {
     cy.clicar(btnMenuEmpresas)
     cy.contains(tituloH2Empresa, 'Empresa')
     cy.clicar(btnColaboradorListagem)
-    cy.contains(tituloPagina, 'Listar Colaboradores')
-    cy.contains(colaboradorExemplo, 'Nataniel')
+    cy.contains(tituloPagina, 'LISTA DE COLABORADORES')
+    cy.contains(colaboradorExemplo, 'Lucas Gabriel')
 })
