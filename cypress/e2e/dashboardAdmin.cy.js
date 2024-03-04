@@ -17,7 +17,7 @@ describe('loginPage', () => {
         cy.cadastrarColaboradorComDadosValidos()
     })
 
-    it.only('CT-WEB-004.1 - Validar cadastro de processo com sucesso', () => {
+    it('CT-WEB-004.1 - Validar cadastro de processo com sucesso', () => {
         cy.acessarCadastroDeProcessoPeloMenuEmpresas()
         cy.cadastrarProcessoComDadosValidos()
     })
