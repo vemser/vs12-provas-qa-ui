@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const puppeteer = require('puppeteer');
 const { ImgurClient } = require('imgur');
 const fs = require('fs');
