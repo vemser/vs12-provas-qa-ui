@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe('loginPage', () => {
+describe('CT-WEB-02 - LoginPage', () => {
 
     beforeEach(() => {
         cy.visit("/")
