@@ -31,9 +31,9 @@ describe('loginPage', () => {
         cy.cadastrarProvaComDadosValidos()
     })
 
-    it('CT-WEB-004.4 - Validar edição de usuário com sucesso', () => {
+    it.only('CT-WEB-004.4 - Validar edição de usuário com sucesso', () => {
         cy.acessarConfiguracaoDoPerfilPeloMenuPerfil()
-        cy.editarPerfilComDadosValidos()
+        cy.editarPerfilComDadosValidos("ADMIN")
     })
     
     it('CT-WEB-004.5 - Validar listagem de questões com sucesso', () => {

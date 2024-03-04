@@ -22,10 +22,14 @@ Cypress.Commands.add('acessarConfiguracaoDoPerfilPeloMenuPerfil', () => {
     cy.contains(tituloH2Perfil, 'Perfil')
 })
 
-Cypress.Commands.add('editarPerfilComDadosValidos', () => {
+Cypress.Commands.add('editarPerfilComDadosValidos', (usuario) => {
 
-    cy.preencherCampo(inputNomeCompleto,faker.person.fullName())
+    cy.preencherCampo(inputNomeCompleto, faker.person.fullName())
     cy.preencherCampo(inputSenha, faker.internet.password())
     cy.clicar(btnEditar)
     cy.contains(popBtnResult, txtPopFeedback)
+    cy.preencherCampo(inputNomeCompleto, usuario)
+    cy.preencherCampo(inputEmail, Cypress.env(`LOGIN_${usuario}`))
+    cy.preencherCampo(inputSenha, Cypress.env(`SENHA_${usuario}`))
+    cy.clicar(btnEditar)
 })
