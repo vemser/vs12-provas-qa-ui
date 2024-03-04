@@ -27,6 +27,14 @@ let campoCargo = '[data-testid="inputCargoUsuario"]'
 let btnCadastrar = '[data-testid="btnCadastrar"]'
 let btnCancelar = '[data-testid="btnCancelar"]'
 
+// Cadastro Colaborador Span Erro
+let spanErroEmpresa = '[data-testid="erroFormEmpresa"]'
+let spanErroNome = '[data-testid="erroNomeUsuario"]'
+let spanErroEmail = '[data-testid="erroEmailUsuario"]'
+let spanErroCargo = '[data-testid="erroCargoUsuario"]'
+let txtErroCampoObrigatorio = 'Campo obrigatório'
+
+
 // Cadastro Processo Seletivo Campos
 campoEmpresa = '[data-testid="inputFormEmpresa"]'
 let campoNomeProcessoSeletivo = '[data-testid="inputNomeProcesso"]'
@@ -76,6 +84,14 @@ Cypress.Commands.add('cadastrarColaboradorComDadosValidos', () => {
     cy.clicar(btnCadastrar)
     cy.wait(8000)
     cy.contains(modelFeedback, txtModelFeedback)
+})
+
+Cypress.Commands.add('cadastrarColaboradorSemDados', () => {
+    cy.clicar(btnCadastrar)
+    cy.contains('#root > section > main > form > p:nth-child(5)', txtErroCampoObrigatorio)
+    cy.contains('#root > section > main > form > p:nth-child(8)', txtErroCampoObrigatorio)
+    cy.contains('#root > section > main > form > p:nth-child(11)', txtErroCampoObrigatorio)
+    cy.contains('#root > section > main > form > p:nth-child(14)', txtErroCampoObrigatorio)
 })
 
 Cypress.Commands.add('acessarCadastroDeProcessoPeloMenuEmpresas', () => {

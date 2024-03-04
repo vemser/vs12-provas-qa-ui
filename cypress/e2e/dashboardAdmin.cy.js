@@ -12,11 +12,15 @@ describe('dashboardAdmin', () => {
         // cy.url().should('eq', 'https://provas-front.vercel.app/dashboard')
     });
 
-    it('CT-WEB-004.0 - Validar cadastro de funcionario com sucesso', () => {
+    it('CT-WEB-004.0.0 - Validar cadastro de funcionario com sucesso', () => {
         cy.acessarCadastroDeColaboradorPeloMenuEmpresas()
         cy.cadastrarColaboradorComDadosValidos()
     })
-
+    it('CT-WEB-004.0.1 - Validar cadastro de funcionario sem sucesso (sem dados)', () => {
+        cy.acessarCadastroDeColaboradorPeloMenuEmpresas()
+        cy.cadastrarColaboradorSemDados()
+    })
+    
     it('CT-WEB-004.1 - Validar cadastro de processo com sucesso', () => {
         cy.acessarCadastroDeProcessoPeloMenuEmpresas()
         cy.cadastrarProcessoComDadosValidos()
