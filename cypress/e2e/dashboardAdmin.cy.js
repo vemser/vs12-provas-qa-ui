@@ -31,7 +31,7 @@ describe('dashboardAdmin', () => {
         cy.cadastrarProvaComDadosValidos()
     })
 
-    it.only('CT-WEB-004.4 - Validar edição de usuário com sucesso', () => {
+    it('CT-WEB-004.4 - Validar edição de usuário com sucesso', () => {
         cy.acessarConfiguracaoDoPerfilPeloMenuPerfil()
         cy.editarPerfilComDadosValidos("ADMIN")
     })
