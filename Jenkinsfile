@@ -29,6 +29,11 @@ pipeline {
 
         IMGUR_LINK=
         IMGUR_CLIENT_ID=
+
+        DOMINIO_APP=
+        DOMINIO_APP_LOGIN=
+
+        DISCORD_WEBHOOK_URL=
     }
 
     stages {
@@ -82,13 +87,13 @@ pipeline {
             script {
                 def imgurLink = sh(script: "node capture.js ${BUILD_NUMBER} ${JOB_NAME}", returnStdout: true).trim()
                 IMGUR_LINK = imgurLink
-                def fowardNgrok = "http://localhost/8080/job/" + JOB_NAME + "/" + BUILD_NUMBER + "/allure/" // deve inserir o dominio do link público do report
+                def fowardNgrok = DOMINIO_APP + "/job/" + JOB_NAME + "/" + BUILD_NUMBER + "/allure/"
                 discordSend(
                     description: "Report atualizado - Clique no link",
                         link: fowardNgrok,
                         result: currentBuild.currentResult,
                         title: "[LINK] Pipeline: Testes API & UI | Job: develop | Build: #${BUILD_NUMBER}",
-                        webhookURL: "https://discord.com/api/webhooks/ / ", // deve ser preenchido com webhook do canal do discord
+                        webhookURL: DISCORD_WEBHOOK_URL,
                         image: "${IMGUR_LINK}"
                 )
             }

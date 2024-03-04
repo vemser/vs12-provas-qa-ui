@@ -1,14 +1,13 @@
-require('dotenv').config();
-
 const puppeteer = require('puppeteer');
 const { ImgurClient } = require('imgur');
 const fs = require('fs');
+require('dotenv').config();
+
 const buildNumber = process.argv[2];
 const jobName = process.argv[3];
-const client = new ImgurClient({
-    clientId: process.env.IMGUR_CLIENT_ID
-});
+const client = new ImgurClient({clientId: process.env.IMGUR_CLIENT_ID});
 const dominio = process.env.DOMINIO_APP;
+
 async function captureScreenshotAndUpload() {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
