@@ -8,7 +8,9 @@ Cypress.Commands.add('gerarDadosDeQuestao', () => {
         questao: {
             "titulo": faker.lorem.words({ min: 1, max: 3}),
             "enunciado":faker.lorem.paragraph(),
-            "tema":faker.number.int({ min: 1, max: 15}),
+            "tema01":faker.number.int({ min: 1, max: 15}),
+            "tema02":faker.number.int({ min: 1, max: 25}),
+            "tema03":faker.number.int({ min: 1, max: 25}),
             "dificuldade": "MEDIA",
             "alternativa01":faker.lorem.words({ min: 1, max: 3}),
             "alternativa02":faker.lorem.words({ min: 1, max: 3}),
