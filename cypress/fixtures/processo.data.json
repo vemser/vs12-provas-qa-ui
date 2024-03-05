@@ -1,0 +1,16 @@
+{
+  "processo": {
+    "empresa": 22,
+    "nomeProcessoSeletivo": "apostolus suscipit",
+    "dataHoraInicial": "2024-03-05T13:36",
+    "dataHoraFinal": "2025-02-19T08:15",
+    "notaDeCorte": 79,
+    "dificuldade": "MEDIO",
+    "tema01": 1,
+    "tema02": 11,
+    "tema03": 3,
+    "quantidadeFacil": 76,
+    "quantidadeMedio": 73,
+    "quantidadeDificil": 54
+  }
+}
