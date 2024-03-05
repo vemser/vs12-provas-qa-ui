@@ -17,7 +17,7 @@ let btnProvas = '.sc-oASGG > [href="/vemser/vs12-provas-front/dashboard/provas"]
 
 // Cadastro Questão Campos
 let campoTitulo = '[data-testid="inputTitleQuestion"]'
-let campoEnunciado = '.ql-editor'
+let campoEnunciado = '#root > section > main > form > div.sc-knwvCr.dFovCS > div > div.p-editor-content.ql-container.ql-snow > div.ql-editor.ql-blank'
 let campoTema = '[data-testid="selectThemeQuestions"]'
 let campoDificuldade = '[data-testid="selectDificultQuestion"]'
 let campoAlternativa01 = '[data-testid="inputAltQuestion1"]'

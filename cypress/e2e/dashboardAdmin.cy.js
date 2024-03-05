@@ -83,4 +83,13 @@ describe('CT-WEB-04 - DashboardAdmin', () => {
     it('CT-WEB-004.13 - Validar botão processo seletivo Home', () => {
         cy.clicarBtnProcessoHome()
     })
+
+    it('CT-WEB-004.2 - Validar listagem de candidatos com sucesso', () => {
+        cy.acessarListagemDeCandidatosPelaHome()
+    })
+    
+    it('CT-WEB-004.2 - Validar listagem de empresas com sucesso', () => {
+        cy.acessarListagemDeEmpresasPelaHome()
+    })
+    
 })
