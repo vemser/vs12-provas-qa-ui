@@ -63,31 +63,31 @@ describe('CT-WEB-04 - DashboardAdmin', () => {
         cy.tentarCadastrarProvaSemCriarAlternativas()
     })
 
-    it('CT-WEB-004.10 - Validar botão colaborador Home', () => {
+    it('CT-WEB-004.10.0 - Validar botão colaborador Home', () => {
         cy.clicarBtnColaboradorHome()
     })
     
-    it('CT-WEB-004.10 - Validar botão candidato Home', () => {
+    it('CT-WEB-004.10.1 - Validar botão candidato Home', () => {
         cy.clicarBtnCandidatoHome()
     })
 
-    it('CT-WEB-004.11 - Validar botão empresa Home', () => {
+    it('CT-WEB-004.10.2 - Validar botão empresa Home', () => {
         cy.clicarBtnEmpresaHome()
     })
 
-    it('CT-WEB-004.12 - Validar botão questão Home', () => {
+    it('CT-WEB-004.10.3 - Validar botão questão Home', () => {
         cy.clicarBtnQuestaoHome()
     })
 
-    it('CT-WEB-004.13 - Validar botão processo seletivo Home', () => {
+    it('CT-WEB-004.10.4 - Validar botão processo seletivo Home', () => {
         cy.clicarBtnProcessoHome()
     })
 
-    it('CT-WEB-004.2 - Validar listagem de candidatos com sucesso', () => {
+    it('CT-WEB-004.11 - Validar listagem de candidatos com sucesso', () => {
         cy.acessarListagemDeCandidatosPelaHome()
     })
     
-    it('CT-WEB-004.2 - Validar listagem de empresas com sucesso', () => {
+    it('CT-WEB-004.12 - Validar listagem de empresas com sucesso', () => {
         cy.acessarListagemDeEmpresasPelaHome()
     })
     
