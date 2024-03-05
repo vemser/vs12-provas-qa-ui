@@ -7,3 +7,4 @@ screenshots
 **/cypress/fixtures/processo.data.json
 **/cypress/fixtures/questao.data.json
 .env
+screenshot.png
