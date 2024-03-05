@@ -30,7 +30,7 @@ describe('CT-WEB-04 - DashboardAdmin', () => {
         cy.acessarListagemDeColaboradoresPeloMenuEmpresas()
     })
 
-    it.only('CT-WEB-004.3 - Validar cadastro de questão com sucesso', () => {
+    it('CT-WEB-004.3 - Validar cadastro de questão com sucesso', () => {
         cy.acessarCadastroDeQuestãoPeloMenuProvas()
         cy.cadastrarProvaObjetivaComDadosValidos()
     })
