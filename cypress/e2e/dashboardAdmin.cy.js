@@ -32,7 +32,7 @@ describe('CT-WEB-04 - DashboardAdmin', () => {
 
     it('CT-WEB-004.3 - Validar cadastro de questão com sucesso', () => {
         cy.acessarCadastroDeQuestãoPeloMenuProvas()
-        cy.cadastrarProvaObjetivaComDadosValidos()
+        cy.cadastrarProvaComDadosValidos()
     })
 
     it('CT-WEB-004.4 - Validar edição de usuário com sucesso', () => {
