@@ -17,11 +17,9 @@ let btnProvas = '.sc-oASGG > [href="/vemser/vs12-provas-front/dashboard/provas"]
 
 // Cadastro Questão Campos
 let campoTitulo = '[data-testid="inputTitleQuestion"]'
-let campoTema = '[data-testid="selectThemeQuestions"]'
-let btnAdicionarTema = '#root > section > main > form > div.sc-khksUn.sc-hTJqdO.foxlTA.cSYAZP > button'
 let campoEnunciado = '#root > section > main > form > div.sc-knwvCr.dFovCS > div > div.p-editor-content.ql-container.ql-snow > div.ql-editor.ql-blank'
+let campoTema = '[data-testid="selectThemeQuestions"]'
 let campoDificuldade = '[data-testid="selectDificultQuestion"]'
-let campoTipoDeQuestao = '[data-testid="selectQuestionType"]'
 let campoAlternativa01 = '[data-testid="inputAltQuestion1"]'
 let campoAlternativa02 = '[data-testid="inputAltQuestion2"]'
 let campoAlternativa03 = '[data-testid="inputAltQuestion3"]'
@@ -45,20 +43,14 @@ Cypress.Commands.add('acessarCadastroDeQuestãoPeloMenuProvas', () => {
     cy.contains(tituloH2CadastrarForm, 'Cadastrar Questões')
 })
 
-Cypress.Commands.add('cadastrarProvaObjetivaComDadosValidos', () => {
+Cypress.Commands.add('cadastrarProvaComDadosValidos', () => {
     cy.lerArquivo("questao.data.json").then((data) => {
         data = data.questao
         cy.preencherCampo(campoTitulo, data.titulo)
         cy.wait(5000)
-        cy.selecionarOpcao(campoTema, data.tema01)
-        cy.clicar(btnAdicionarTema)
-        cy.selecionarOpcao(campoTema, data.tema02)
-        cy.clicar(btnAdicionarTema)
-        cy.selecionarOpcao(campoTema, data.tema03)
-        cy.clicar(btnAdicionarTema)
-        cy.preencherCampo(campoEnunciado, data.enunciado)
+        cy.selecionarOpcao(campoTema, data.tema)
         cy.selecionarOpcao(campoDificuldade, data.dificuldade)
-        cy.selecionarOpcao(campoTipoDeQuestao, "OBJETIVA")
+        cy.preencherCampo(campoEnunciado, data.enunciado)
         .clicar(btnAdicionarAlternativa)
         cy.preencherCampo(campoAlternativa01, data.alternativa01)
         cy.preencherCampo(campoAlternativa02, data.alternativa02)
