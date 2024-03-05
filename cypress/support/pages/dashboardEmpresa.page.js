@@ -82,7 +82,7 @@ Cypress.Commands.add('cadastrarColaboradorComDadosValidos', () => {
         cy.selecionarOpcao(campoCargo, data.cargo)
     })
     cy.clicar(btnCadastrar)
-    cy.wait(8000)
+    cy.wait(5000)
     cy.contains(modelFeedback, txtModelFeedback)
 })
 
@@ -141,6 +141,6 @@ Cypress.Commands.add('acessarListagemDeColaboradoresPeloMenuEmpresas', () => {
     cy.clicar(btnMenuEmpresas)
     cy.contains(tituloH2Empresa, 'Empresa')
     cy.clicar(btnColaboradorListagem)
-    cy.contains(tituloPagina, 'Lista de Colaboradores')
+    cy.contains('.sc-clcPSL', 'Lista de Colaboradores')
     cy.contains(empresaExemplo, 'GERAL')
 })

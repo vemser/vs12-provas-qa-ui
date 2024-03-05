@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker';
 
 // Menu Perfil
-let btnMenuPerfil = '[href="/vemser/vs12-provas-front/dashboard/perfil"]'
+let btnMenuPerfil = '.sc-oASGG > [href="/vemser/vs12-provas-front/dashboard/perfil"]'
 
 // Textos
 let tituloH2Perfil = '#root > section > main > header > h2'

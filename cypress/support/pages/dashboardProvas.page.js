@@ -9,7 +9,7 @@ let tituloH2CadastrarForm = '#root > section > main > form > h2'
 // seção de listagens
 let btnQuestoesListagens = '[data-testid="btnQuestionList"]'
 let tituloH1Listagem = '#root > section > main > h1'
-let primeiraQuestao = '#root > section > main > div.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.MuiTableContainer-root.css-13xy2my > table > tbody > tr:nth-child(1) > th'
+let primeiraQuestao = '#root > section > main > div.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.MuiTableContainer-root.css-13xy2my > table > tbody > tr:nth-child(1) > td:nth-child(3)'
 
 // Menu Provas
 // let btnProvas = '.sc-jeWJQQ > [href="/dashboard/provas"]'
@@ -47,7 +47,7 @@ Cypress.Commands.add('cadastrarProvaComDadosValidos', () => {
     cy.lerArquivo("questao.data.json").then((data) => {
         data = data.questao
         cy.preencherCampo(campoTitulo, data.titulo)
-        cy.wait(8000)
+        cy.wait(5000)
         cy.selecionarOpcao(campoTema, data.tema)
         cy.selecionarOpcao(campoDificuldade, data.dificuldade)
         cy.preencherCampo(campoEnunciado, data.enunciado)
@@ -55,7 +55,7 @@ Cypress.Commands.add('cadastrarProvaComDadosValidos', () => {
         cy.preencherCampo(campoAlternativa01, data.alternativa01)
         cy.preencherCampo(campoAlternativa02, data.alternativa02)
         cy.preencherCampo(campoAlternativa03, data.alternativa02)
-        .clicar(`:nth-child(${data.correta}) > label`)
+        .clicar(`#root > section > main > form > div.sc-lbNsEr.ftMHqp > div:nth-child(${data.correta}) > label`)
     })
     cy.clicar(btnCadastrar)
 })
@@ -65,9 +65,9 @@ Cypress.Commands.add('acessarListagemDeQuestãoPeloMenuProvas', () => {
     cy.clicar(btnProvas)
     cy.contains(tituloH2Provas, 'Provas')
     cy.clicar(btnQuestoesListagens)
-    cy.contains(tituloH1Listagem, 'LISTA DE QUESTÕES')
+    cy.contains(tituloH1Listagem, 'Lista de Questões')
     cy.wait(8000)
-    cy.contains(primeiraQuestao, 'O que é Java?')
+    cy.contains(primeiraQuestao, 'FACIL')
 })
 
 Cypress.Commands.add('tentarCadastrarProvaComTituloInvalido', () => {
@@ -82,7 +82,7 @@ Cypress.Commands.add('tentarCadastrarProvaComTituloInvalido', () => {
         cy.preencherCampo(campoAlternativa01, data.alternativa01)
         cy.preencherCampo(campoAlternativa02, data.alternativa02)
         cy.preencherCampo(campoAlternativa03, data.alternativa02)
-        .clicar(`:nth-child(${data.correta}) > label`)
+        .clicar(`#root > section > main > form > div.sc-lbNsEr.ftMHqp > div:nth-child(${data.correta}) > label`)
     })
     cy.clicar(btnCadastrar)
 })
@@ -98,7 +98,7 @@ Cypress.Commands.add('tentarCadastrarProvaSemSelecionarTema', () => {
         cy.preencherCampo(campoAlternativa01, data.alternativa01)
         cy.preencherCampo(campoAlternativa02, data.alternativa02)
         cy.preencherCampo(campoAlternativa03, data.alternativa02)
-        .clicar(`:nth-child(${data.correta}) > label`)
+        .clicar(`#root > section > main > form > div.sc-lbNsEr.ftMHqp > div:nth-child(${data.correta}) > label`)
     })
     cy.clicar(btnCadastrar)
 })
@@ -114,7 +114,7 @@ Cypress.Commands.add('tentarCadastrarProvaSemEnunciado', () => {
         cy.preencherCampo(campoAlternativa01, data.alternativa01)
         cy.preencherCampo(campoAlternativa02, data.alternativa02)
         cy.preencherCampo(campoAlternativa03, data.alternativa02)
-        .clicar(`:nth-child(${data.correta}) > label`)
+        .clicar(`#root > section > main > form > div.sc-lbNsEr.ftMHqp > div:nth-child(${data.correta}) > label`)
     })
     cy.clicar(btnCadastrar)
 })

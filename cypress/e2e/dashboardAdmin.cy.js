@@ -63,5 +63,24 @@ describe('CT-WEB-04 - DashboardAdmin', () => {
         cy.acessarCadastroDeQuestãoPeloMenuProvas()
         cy.tentarCadastrarProvaSemCriarAlternativas()
     })
+
+    it('CT-WEB-004.10 - Validar botão colaborador Home', () => {
+        cy.clicarBtnColaboradorHome()
+    })
     
+    it('CT-WEB-004.10 - Validar botão candidato Home', () => {
+        cy.clicarBtnCandidatoHome()
+    })
+
+    it('CT-WEB-004.11 - Validar botão empresa Home', () => {
+        cy.clicarBtnEmpresaHome()
+    })
+
+    it('CT-WEB-004.12 - Validar botão questão Home', () => {
+        cy.clicarBtnQuestaoHome()
+    })
+
+    it('CT-WEB-004.13 - Validar botão processo seletivo Home', () => {
+        cy.clicarBtnProcessoHome()
+    })
 })
