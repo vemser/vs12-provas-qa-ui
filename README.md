@@ -2,7 +2,7 @@
 
 # Testes com Cypress para UI
 
-(adicionar descrição do projeto)
+O projeto de testes UI - Provas DBC consiste na implementação de testes de interface de usuário utilizando a ferramenta Cypress. O objetivo principal é garantir a qualidade e a integridade do software por meio da automação de testes em diferentes aspectos do sistema.
 
 ## Rodando o projeto localmente
 
@@ -51,15 +51,20 @@ Se estiver no Mac/Linux:
     npm i -g allure-commandline
   ```
   - Certifique-se de que o seu arquivo .env está configurado corretamente, caso contrário, os testes irão falhar.
+  - Verifique o JENKINSFILE caso queira replicar a pipeline utilizada pelo time da VS13.
 
-## Features cobertas
+  - **NÃO DE COMMIT EM DADOS SENSÍVEIS!**
 
- - Cadastro do Usuário; //exemplo
- - Login do Usuário; //exemplo
- - Adicionar Endereço ao Usuário; //exemplo
- - Checkout; //exemplo
- - Lista de desejos; //exemplo
- - Newsletter; //exemplo
+## Features cobertas de forma manual e ou automatizada
+
+ - Login dos usuários;
+ - Validação do direcionamento das rotas no front-end;
+ - Validação das ações no dashboard dos usuários;
+ - Cadastro de questões;
+ - Cadastro de processos seletivos;
+ - Cadastro de empresas;
+ - Edição de perfil;
+ - Cadastro de colaboradores.
 
 
 ## Referências
