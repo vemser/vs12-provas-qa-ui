@@ -1,3 +1,10 @@
+.idea
 node_modules
 allure-report
 allure-results
+screenshots
+**/cypress/fixtures/user.data.json
+**/cypress/fixtures/processo.data.json
+**/cypress/fixtures/questao.data.json
+.env
+screenshot.png

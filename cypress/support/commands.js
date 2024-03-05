@@ -1,9 +1,10 @@
-import '../support/commands/dataFaker.commands'
-import '../support/commands/landingPage.commands';
-import '../support/commands/login.commands';
-import "../support/commands/adminHomeCadastrarColaborador.commands"
-import '../support/commands/adminHomeCadastrarEmpresa.commands'
-import '../support/commands/perfilPage.commands'
-import '../support/commands/adminHomeCadastrarProcessoSeletivo.commands'
-import '@shelex/cypress-allure-plugin';
-
+import '../support/factory/processoFactory'
+import '../support/factory/userFactory'
+import '../support/factory/questaoFactory'
+import '../support/pages/base.page'
+import '../support/pages/landing.page'
+import '../support/pages/login.page'
+import '../support/pages/dashboardHome.page'
+import '../support/pages/dashboardProvas.page'
+import '../support/pages/dashboardEmpresa.page'
+import '../support/pages/dashboardPerfil.page'
