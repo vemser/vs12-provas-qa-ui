@@ -10,7 +10,6 @@ describe('CT-WEB-02 - LoginPage', () => {
     it('CT-WEB-002.0.0 - Validar login ADMIN com sucesso', () => {
         cy.fazerLogin("ADMIN")
         cy.url().should('eq', 'http://vemser-dbc.dbccompany.com.br:39000/vemser/vs12-provas-front/dashboard')
-        // cy.url().should('eq', 'https://provas-front.vercel.app/dashboard')
     })
 
     it('CT-WEB-002.0.1 - Validar login GESTOR com sucesso', () => {

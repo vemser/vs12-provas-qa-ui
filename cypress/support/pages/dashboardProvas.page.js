@@ -9,7 +9,7 @@ let tituloH2CadastrarForm = '#root > section > main > form > h2'
 // seção de listagens
 let btnQuestoesListagens = '[data-testid="btnQuestionList"]'
 let tituloH1Listagem = '#root > section > main > h1'
-let primeiraQuestao = '#root > section > main > div.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.MuiTableContainer-root.css-13xy2my > table > tbody > tr:nth-child(1) > td:nth-child(3)'
+let primeiraQuestao = '.MuiTableBody-root > :nth-child(1) > :nth-child(3)'
 
 // Menu Provas
 // let btnProvas = '.sc-jeWJQQ > [href="/dashboard/provas"]'
@@ -31,11 +31,13 @@ let btnAdicionarAlternativa = '[data-testid="btnAddAltQuestion"]'
 let btnCadastrar = '[data-testid="btnRegisterQuestion"]'
 let btnCancelar = '[data-testid="btnCancelar"]'
 
-let spanTituloInvalido = '#root > section > main > form > p:nth-child(5)'
+let spanTituloInvalido = '[data-testid="errorTitleQuestion"]'
 let spanDificuldadeInvalida = '#root > section > main > form > p:nth-child(12)'
-let spanEnunciadoInvalido = '#root > section > main > form > p:nth-child(15)'
+let spanEnunciadoInvalido = '[data-testid="errorPromptQuestion"]'
 
-let msgmCampoObrigatorio = 'CAMPO OBRIGATÓRIO'
+let modelFeedback = '.Toastify__toast-body > :nth-child(2)'
+let txtModelFeedbackQuestao = 'Questão cadastrada com sucesso!'
+let msgmCampoObrigatorio = 'Campo obrigatório'
 
 Cypress.Commands.add('acessarCadastroDeQuestãoPeloMenuProvas', () => {
     
@@ -62,10 +64,12 @@ Cypress.Commands.add('cadastrarProvaObjetivaComDadosValidos', () => {
         .clicar(btnAdicionarAlternativa)
         cy.preencherCampo(campoAlternativa01, data.alternativa01)
         cy.preencherCampo(campoAlternativa02, data.alternativa02)
-        cy.preencherCampo(campoAlternativa03, data.alternativa02)
+        cy.preencherCampo(campoAlternativa03, data.alternativa03)
         .clicar(`#root > section > main > form > div.sc-lbNsEr.ftMHqp > div:nth-child(${data.correta}) > label`)
     })
     cy.clicar(btnCadastrar)
+    cy.contains(modelFeedback, txtModelFeedbackQuestao)
+
 })
 
 Cypress.Commands.add('acessarListagemDeQuestãoPeloMenuProvas', () => {
@@ -74,38 +78,43 @@ Cypress.Commands.add('acessarListagemDeQuestãoPeloMenuProvas', () => {
     cy.contains(tituloH2Provas, 'Provas')
     cy.clicar(btnQuestoesListagens)
     cy.contains(tituloH1Listagem, 'Lista de Questões')
-    cy.wait(8000)
+    cy.wait(5000)
     cy.contains(primeiraQuestao, 'FACIL')
 })
 
 Cypress.Commands.add('tentarCadastrarProvaComTituloInvalido', () => {
     cy.lerArquivo("questao.data.json").then((data) => {
         data = data.questao
-        cy.preencherCampo(campoTitulo, " ")
-        cy.wait(8000)
-        cy.selecionarOpcao(campoTema, data.tema)
+        cy.preencherCampo(campoTitulo, "A casa do menino é azul e o pai dele gosta de amarelo")
+        cy.wait(5000)
+        cy.selecionarOpcao(campoTema, data.tema01)
+        cy.clicar(btnAdicionarTema)
         cy.selecionarOpcao(campoDificuldade, data.dificuldade)
         cy.preencherCampo(campoEnunciado, data.enunciado)
+        cy.selecionarOpcao(campoDificuldade, data.dificuldade)
+        cy.selecionarOpcao(campoTipoDeQuestao, "OBJETIVA")
         .clicar(btnAdicionarAlternativa)
         cy.preencherCampo(campoAlternativa01, data.alternativa01)
         cy.preencherCampo(campoAlternativa02, data.alternativa02)
-        cy.preencherCampo(campoAlternativa03, data.alternativa02)
+        cy.preencherCampo(campoAlternativa03, data.alternativa03)
         .clicar(`#root > section > main > form > div.sc-lbNsEr.ftMHqp > div:nth-child(${data.correta}) > label`)
     })
     cy.clicar(btnCadastrar)
+    cy.contains(spanTituloInvalido, 'Título muito longo')
 })
 
 Cypress.Commands.add('tentarCadastrarProvaSemSelecionarTema', () => {
     cy.lerArquivo("questao.data.json").then((data) => {
         data = data.questao
         cy.preencherCampo(campoTitulo, data.titulo)
-        cy.wait(8000)
         cy.selecionarOpcao(campoDificuldade, data.dificuldade)
         cy.preencherCampo(campoEnunciado, data.enunciado)
+        cy.selecionarOpcao(campoDificuldade, data.dificuldade)
+        cy.selecionarOpcao(campoTipoDeQuestao, "OBJETIVA")
         .clicar(btnAdicionarAlternativa)
         cy.preencherCampo(campoAlternativa01, data.alternativa01)
         cy.preencherCampo(campoAlternativa02, data.alternativa02)
-        cy.preencherCampo(campoAlternativa03, data.alternativa02)
+        cy.preencherCampo(campoAlternativa03, data.alternativa03)
         .clicar(`#root > section > main > form > div.sc-lbNsEr.ftMHqp > div:nth-child(${data.correta}) > label`)
     })
     cy.clicar(btnCadastrar)
@@ -115,27 +124,33 @@ Cypress.Commands.add('tentarCadastrarProvaSemEnunciado', () => {
     cy.lerArquivo("questao.data.json").then((data) => {
         data = data.questao
         cy.preencherCampo(campoTitulo, data.titulo)
-        cy.wait(8000)
-        cy.selecionarOpcao(campoTema, data.tema)
+        cy.wait(5000)
+        cy.selecionarOpcao(campoTema, data.tema01)
+        cy.clicar(btnAdicionarTema)
         cy.selecionarOpcao(campoDificuldade, data.dificuldade)
-        cy.clicar(btnAdicionarAlternativa)
+        cy.selecionarOpcao(campoDificuldade, data.dificuldade)
+        cy.selecionarOpcao(campoTipoDeQuestao, "OBJETIVA")
+        .clicar(btnAdicionarAlternativa)
         cy.preencherCampo(campoAlternativa01, data.alternativa01)
         cy.preencherCampo(campoAlternativa02, data.alternativa02)
-        cy.preencherCampo(campoAlternativa03, data.alternativa02)
+        cy.preencherCampo(campoAlternativa03, data.alternativa03)
         .clicar(`#root > section > main > form > div.sc-lbNsEr.ftMHqp > div:nth-child(${data.correta}) > label`)
     })
     cy.clicar(btnCadastrar)
+    cy.contains(spanEnunciadoInvalido, msgmCampoObrigatorio)
 })
 
 Cypress.Commands.add('tentarCadastrarProvaSemCriarAlternativas', () => {
     cy.lerArquivo("questao.data.json").then((data) => {
         data = data.questao
-        cy.preencherCampo(campoTitulo, " ")
-        cy.wait(8000)
-        cy.selecionarOpcao(campoTema, data.tema)
+        cy.preencherCampo(campoTitulo, data.titulo)
+        cy.wait(5000)
+        cy.selecionarOpcao(campoTema, data.tema01)
+        cy.clicar(btnAdicionarTema)
         cy.selecionarOpcao(campoDificuldade, data.dificuldade)
         cy.preencherCampo(campoEnunciado, data.enunciado)
-        .clicar(btnAdicionarAlternativa)
+        cy.selecionarOpcao(campoDificuldade, data.dificuldade)
+        cy.selecionarOpcao(campoTipoDeQuestao, "OBJETIVA")
     })
     cy.clicar(btnCadastrar)
 })

@@ -9,7 +9,6 @@ describe('CT-WEB-04 - DashboardAdmin', () => {
         cy.gerarDadosDeQuestao()
         cy.fazerLogin("ADMIN")
         cy.url().should('eq', 'http://vemser-dbc.dbccompany.com.br:39000/vemser/vs12-provas-front/dashboard')
-        // cy.url().should('eq', 'https://provas-front.vercel.app/dashboard')
     });
 
     it('CT-WEB-004.0.0 - Validar cadastro de funcionario com sucesso', () => {
@@ -30,7 +29,7 @@ describe('CT-WEB-04 - DashboardAdmin', () => {
         cy.acessarListagemDeColaboradoresPeloMenuEmpresas()
     })
 
-    it('CT-WEB-004.3 - Validar cadastro de questão com sucesso', () => {
+    it('CT-WEB-004.3 - Validar cadastro de questão objetiva com sucesso', () => {
         cy.acessarCadastroDeQuestãoPeloMenuProvas()
         cy.cadastrarProvaObjetivaComDadosValidos()
     })
@@ -44,7 +43,7 @@ describe('CT-WEB-04 - DashboardAdmin', () => {
         cy.acessarListagemDeQuestãoPeloMenuProvas()
     })
 
-    it('CT-WEB-004.6 - Validar cadastro de questão sem título sem sucesso', () => {
+    it('CT-WEB-004.6 - Validar cadastro de questão com titulo inválido sem sucesso', () => {
         cy.acessarCadastroDeQuestãoPeloMenuProvas()
         cy.tentarCadastrarProvaComTituloInvalido()
     })

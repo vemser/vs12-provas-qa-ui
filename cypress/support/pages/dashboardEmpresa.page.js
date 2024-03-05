@@ -64,7 +64,7 @@ let empresaExemplo = '.MuiTableBody-root > :nth-child(1) > :nth-child(3)'
 
 // Model Feedback
 let modelFeedback = '.Toastify__toast-body > :nth-child(2)'
-let txtModelFeedback = 'Sucesso'
+let txtModelFeedbackColaborador = 'Sucesso'
 
 Cypress.Commands.add('acessarCadastroDeColaboradorPeloMenuEmpresas', () => {
     cy.clicar(btnMenuEmpresas)
@@ -83,7 +83,7 @@ Cypress.Commands.add('cadastrarColaboradorComDadosValidos', () => {
     })
     cy.clicar(btnCadastrar)
     cy.wait(5000)
-    cy.contains(modelFeedback, txtModelFeedback)
+    cy.contains(modelFeedback, txtModelFeedbackColaborador)
 })
 
 Cypress.Commands.add('cadastrarColaboradorSemDados', () => {
