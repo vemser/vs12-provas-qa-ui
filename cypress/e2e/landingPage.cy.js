@@ -49,5 +49,25 @@ describe('CT-WEB-01 - LandingPage', () => {
     it('CT-WEB-001.2 - Clicar no botão "Converse com nossa equipe!" com sucesso', () => {
         cy.verificarBotaoConverseComNossaEquipe()
     })
+
+    it('CT-WEB-001.2.1 - Validar clicar no botão "Instagram" com sucesso', () => {
+        cy.validarBotaoInstagram('https://www.instagram.com/')
+    })
+
+    it('CT-WEB-001.2.2 - Validar clicar no botão "Linkedin" com sucesso', () => {
+        cy.validarBotaoLinkedin('https://www.linkedin.com/')
+    })
+
+    it('CT-WEB-001.2.3 - Validar clicar no botão "Youtube" com sucesso', () => {
+        cy.validarBotaoYoutube('https://www.youtube.com/')
+    })
+
+    it('CT-WEB-001.2.4 - Validar clicar no botão "Twitter" com sucesso', () => {
+        cy.validarBotaoTwitter('https://www.twitter.com/')
+    })
+
+    it('CT-WEB-001.2.5 - Validar clicar no botão "Facebook" com sucesso', () => {
+        cy.validarBotaoFacebook('https://www.facebook.com/')
+    })
     
 })

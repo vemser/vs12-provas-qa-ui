@@ -1,4 +1,4 @@
-import { faker } from '@faker-js/faker';
+import { faker, ur } from '@faker-js/faker';
 
 // Botões do nav bar
 let btnHome = '[data-testid="linkHomeHeader"]'
@@ -6,6 +6,13 @@ let btnSobre = '[data-testid="linkAboutHeader"]'
 let btnComoFunciona = '[data-testid="linkHowWorksHeader"]'
 let btnContato = '[data-testid="linkContactHeader"]'
 let btnLogin = '[data-testid="linkLoginHeader"]'
+
+// Botões do footer
+let btnLinkedin = '[data-testid="LinkedInIcon"]'
+let btnInstagram = '[data-testid="InstagramIcon"]'
+let btnYoutube = '[data-testid="YouTubeIcon"]'
+let btnTwitter = '[data-testid="TwitterIcon"]'
+let btnFacebook = '[data-testid="FacebookIcon"]'
 
 // Botões do body
 let btnConhecaDbcProvas = '[data-testid="linkHeroToProposal"]'
@@ -157,4 +164,34 @@ Cypress.Commands.add('verificarBotaoConverseComNossaEquipe', () => {
     cy.contains(modalConverseEspecialistas, txtmodalConverseEspecialistas)
 })
 
+Cypress.Commands.add('validarBotaoInstagram', (url) => {
+    cy.wait(2000)
+    cy.get('#footer > div:nth-child(2) > div.sc-ksJisA.knOOzS > button:nth-child(2) > a').invoke('attr', 'href').then(href => {
+        expect(href).to.equal(url);
+      });
+})
 
+Cypress.Commands.add('validarBotaoLinkedin', (url) => {
+    cy.get('#footer > div:nth-child(2) > div.sc-ksJisA.knOOzS > button:nth-child(1) > a')
+    .invoke("removeAttr", "target").click({ force: true });
+    cy.url().should('eq', url)
+})
+
+Cypress.Commands.add('validarBotaoYoutube', (url) => {
+    cy.visit('/')
+     cy.get('#footer > div:nth-child(2) > div.sc-ksJisA.knOOzS > button:nth-child(3) > a').invoke('attr', 'href').then(href => {
+        expect(href).to.equal(url);
+      });
+})
+
+Cypress.Commands.add('validarBotaoTwitter', (url) => {
+    cy.get('#footer > div:nth-child(2) > div.sc-ksJisA.knOOzS > button:nth-child(4) > a').invoke('attr', 'href').then(href => {
+        expect(href).to.equal(url);
+      });
+})
+
+Cypress.Commands.add('validarBotaoFacebook', (url) => {
+    cy.get('#footer > div:nth-child(2) > div.sc-ksJisA.knOOzS > button:nth-child(5) > a')
+    .invoke("removeAttr", "target").click({ force: true });
+    cy.url().should('eq', url)
+})
