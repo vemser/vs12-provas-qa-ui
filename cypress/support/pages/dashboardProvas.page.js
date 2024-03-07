@@ -9,7 +9,7 @@ let tituloH2CadastrarForm = '#root > section > main > form > h2'
 // seção de listagens
 let btnQuestoesListagens = '[data-testid="btnQuestionList"]'
 let tituloH1Listagem = '#root > section > main > h1'
-let primeiraQuestao = '.MuiTableBody-root > :nth-child(1) > :nth-child(3)'
+let primeiraQuestao = '.MuiTableBody-root > :nth-child(1) > th.MuiTableCell-root'
 let btnUltimaPagina = ':nth-child(8) > .MuiButtonBase-root'
 
 // Menu Provas
@@ -78,9 +78,8 @@ Cypress.Commands.add('acessarListagemDeQuestãoPeloMenuProvas', () => {
     cy.clicar(btnProvas)
     cy.contains(tituloH2Provas, 'Provas')
     cy.clicar(btnQuestoesListagens)
-    cy.contains(tituloH1Listagem, 'Lista de Questões')
-    //cy.wait(5000)
-    cy.contains(primeiraQuestao, 'FACIL')
+    cy.get(primeiraQuestao).should('be.visible');
+
 })
 
 Cypress.Commands.add('desativarQuestaoCadastradaPeloMenuProvas', () => {

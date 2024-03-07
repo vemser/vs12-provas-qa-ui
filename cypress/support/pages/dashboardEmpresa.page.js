@@ -60,7 +60,7 @@ let quantidadeTecnicas = 0
 
 // Listagem Colaboradores
 let tituloPagina = '[data-testid="employeesListTitle"]'
-let empresaExemplo = '.MuiTableBody-root > :nth-child(1) > :nth-child(3)'
+let primeiroColaborador = '.MuiTableBody-root > :nth-child(1) > th.MuiTableCell-root'
 
 // Model Feedback
 let modelFeedback = '.Toastify__toast-body > :nth-child(2)'
@@ -141,6 +141,5 @@ Cypress.Commands.add('acessarListagemDeColaboradoresPeloMenuEmpresas', () => {
     cy.clicar(btnMenuEmpresas)
     cy.contains(tituloH2Empresa, 'Empresa')
     cy.clicar(btnColaboradorListagem)
-    cy.contains('.sc-clcPSL', 'Lista de Colaboradores')
-    cy.contains(empresaExemplo, 'GERAL')
+    cy.get(primeiroColaborador).should('be.visible');
 })

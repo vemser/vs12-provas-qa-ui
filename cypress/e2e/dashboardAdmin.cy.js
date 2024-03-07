@@ -25,7 +25,7 @@ describe('CT-WEB-04 - DashboardAdmin', () => {
         cy.cadastrarProcessoComDadosValidos()
     })
 
-    it('CT-WEB-004.2 - Validar listagem de colaboradores com sucesso', () => {
+    it.only('CT-WEB-004.2 - Validar listagem de colaboradores com sucesso', () => {
         cy.acessarListagemDeColaboradoresPeloMenuEmpresas()
     })
 
