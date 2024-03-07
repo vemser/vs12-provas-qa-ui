@@ -39,9 +39,52 @@ describe('CT-WEB-02 - LoginPage', () => {
         cy.fazerLoginSemSenha("ADMIN")
     })
     
-    
-    it('CT-WEB-002.2 - Validar login sem sucesso com dados inválidos', () => {
+    it('CT-WEB-002.2.0 - Validar login sem sucesso com dados inválidos', () => {
         cy.fazerLoginComDadosInvalidos()
+    })
+
+    it('CT-WEB-002.2.1 - Validar botão voltar na página de login', () => {
+        cy.clicarBotaoVoltar()
+    })
+
+    it('CT-WEB-002.2.2 - Validar botão voltar na página de login mobile', () => {
+        cy.clicarBotaoVoltarMobile()
+    })
+    
+    it('CT-WEB-002.2.3 - Validar login ADMIN com sucesso mobile', () => {
+        cy.fazerLoginMobile("ADMIN")
+        cy.url().should('eq', 'http://vemser-dbc.dbccompany.com.br:39000/vemser/vs12-provas-front/dashboard')
+    })
+
+    it('CT-WEB-002.2.4 - Validar login GESTOR com sucesso mobile', () => {
+        cy.fazerLoginMobile("GESTOR")
+        cy.url().should('eq', 'http://vemser-dbc.dbccompany.com.br:39000/vemser/vs12-provas-front/dashboard')
+    })
+
+    it('CT-WEB-002.2.5 - Validar login MODERADOR com sucesso', () => {
+        cy.fazerLoginMobile("MODERADOR")
+        cy.url().should('eq', 'http://vemser-dbc.dbccompany.com.br:39000/vemser/vs12-provas-front/dashboard')
+    })
+
+    it('CT-WEB-002.2.6 - Validar login CANDIDATO com sucesso', () => {
+        cy.fazerLoginMobile("CANDIDATO")
+        cy.url().should('eq', 'http://vemser-dbc.dbccompany.com.br:39000/vemser/vs12-provas-front/candidato')
+    })
+
+    it('CT-WEB-002.2.7 - Validar login sem sucesso (sem dados) mobile', () => {
+        cy.fazerLoginSemDadosMobile()
+    })
+
+    it('CT-WEB-002.2.8 - Validar login sem sucesso (sem email) mobile', () => {
+        cy.fazerLoginSemEmailMobile("ADMIN")
+    })
+
+    it('CT-WEB-002.2.9 - Validar login sem sucesso (sem senha) mobile', () => {
+        cy.fazerLoginSemSenhaMobile("ADMIN")
+    })
+    
+    it('CT-WEB-002.3.0 - Validar login sem sucesso com dados inválidos mobile', () => {
+        cy.fazerLoginComDadosInvalidosMobile()
     })
 
 })

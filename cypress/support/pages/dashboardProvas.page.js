@@ -10,6 +10,7 @@ let tituloH2CadastrarForm = '#root > section > main > form > h2'
 let btnQuestoesListagens = '[data-testid="btnQuestionList"]'
 let tituloH1Listagem = '#root > section > main > h1'
 let primeiraQuestao = '.MuiTableBody-root > :nth-child(1) > :nth-child(3)'
+let btnUltimaPagina = ':nth-child(8) > .MuiButtonBase-root'
 
 // Menu Provas
 // let btnProvas = '.sc-jeWJQQ > [href="/dashboard/provas"]'
@@ -78,8 +79,23 @@ Cypress.Commands.add('acessarListagemDeQuestãoPeloMenuProvas', () => {
     cy.contains(tituloH2Provas, 'Provas')
     cy.clicar(btnQuestoesListagens)
     cy.contains(tituloH1Listagem, 'Lista de Questões')
-    cy.wait(5000)
+    //cy.wait(5000)
     cy.contains(primeiraQuestao, 'FACIL')
+})
+
+Cypress.Commands.add('desativarQuestaoCadastradaPeloMenuProvas', () => {
+    cy.acessarListagemDeQuestãoPeloMenuProvas()
+    cy.clicar(btnUltimaPagina)
+    
+    cy.wait(2000)
+
+    cy.get('table > tbody > tr')
+    .last() 
+    .find('td.MuiTableCell-root.MuiTableCell-body.MuiTableCell-alignRight.MuiTableCell-sizeMedium.css-8q2lh2 > svg:nth-child(2)') // Seletor para encontrar o elemento svg dentro do último tr
+    .click();
+
+    cy.clicar('body > div.sc-fbzYXw.TxAlp.MuiModal-root.css-8ndowl > div.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.sc-GFXod.loPhAS.css-aoeo82 > div.sc-fXitXF.cHZwRI > button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeMedium.MuiButton-containedSizeMedium.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeMedium.MuiButton-containedSizeMedium.sc-dwvMdg.lktNOs.css-1hw9j7s')
+
 })
 
 Cypress.Commands.add('tentarCadastrarProvaComTituloInvalido', () => {
